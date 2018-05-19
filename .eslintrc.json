@@ -1,0 +1,40 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["prettier"],
+  "rules": {
+    "prefer-promise-reject-errors": "error",
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "prettier/prettier": ["error"],
+    "linebreak-style": ["error", "unix"],
+    "react/jsx-filename-extension": "off",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxBOF": 0,
+        "maxEOF": 1
+      }
+    ],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "max-len": ["error", 500],
+    "semi": "warn",
+    "react/display-name": 0,
+    "react/no-children-prop": 0,
+    "eqeqeq": "warn"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [    
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ]
+}
