@@ -1,9 +1,6 @@
 import React from "react";
-import Leaflet from "leaflet";
 import styled from "styled-components";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
-
-Leaflet.Icon.Default.imagePath = "../../../node_modules/leaflet/dist/images/";
 
 const StyledMapWrapper = styled.div`
   height: 100%;
