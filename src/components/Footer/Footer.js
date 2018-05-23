@@ -1,10 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const StyledFooter = styled.footer`
-  height: 30px;
-  background-color: yellow;
-`;
+import { StyledFooter } from "./Footer.styles";
 
 const Footer = () => {
   return <StyledFooter>Footer</StyledFooter>;

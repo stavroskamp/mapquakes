@@ -1,20 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
-
-const StyledMapWrapper = styled.div`
-  height: 100%;
-  width: 74%;
-  background-color: skyblue;
-`;
-
-const StyledMap = styled(LeafletMap)`
-  height: 100%;
-`;
+import { Marker, Popup, TileLayer } from "react-leaflet";
+import { StyledMapWrapper, StyledMap } from "./Map.styles";
 
 const position = [51.505, -0.09];
 
-const MapComponent = () => {
+const MapContainer = () => {
   return (
     <StyledMapWrapper>
       <StyledMap center={position} zoom={13}>
@@ -34,4 +24,4 @@ const MapComponent = () => {
   );
 };
 
-export default MapComponent;
+export default MapContainer;
