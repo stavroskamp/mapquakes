@@ -1,33 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { toggleButtonAction } from "../../actions";
+import { getEarthquakesAction } from "../../actions";
 import { StyledLegend } from "./Legend.styles";
 import Button from "../../components/Button/Button";
 
 class LegendContainer extends React.Component {
   static propTypes = {
-    toggleButtonAction: PropTypes.func,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    getEarthquakesAction: PropTypes.func
   };
 
-  buttonClick = () => {
-    this.props.dispatch(toggleButtonAction());
+  getEarthquakes = () => {
+    this.props.dispatch(getEarthquakesAction());
   };
 
   render() {
     return (
       <StyledLegend>
-        <Button onClick={this.buttonClick} />
+        <Button onClick={this.getEarthquakes}>Get Earthquakes</Button>
       </StyledLegend>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { toggleButtonAction } = state;
+  const { getEarthquakesAction } = state;
 
-  return { toggleButtonAction };
+  return { getEarthquakesAction };
 };
 
 export default connect(mapStateToProps)(LegendContainer);
