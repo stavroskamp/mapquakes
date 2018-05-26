@@ -1,10 +1,10 @@
 import Color from "color";
 import styled from "styled-components";
-import { Button as BootstrapButton } from "reactstrap";
+import { Button } from "reactstrap";
 
 const mainColor = Color("rebeccapurple");
 
-export const StyledButton = styled(BootstrapButton)`
+export const StyledButton = styled(Button)`
   background-color: ${mainColor.hex()}!important;
   border-color: ${mainColor.hex()}!important;
   color: #ffff;
