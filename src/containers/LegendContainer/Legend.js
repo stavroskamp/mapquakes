@@ -8,7 +8,8 @@ import Button from "../../components/Button/Button";
 class LegendContainer extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    getEarthquakesAction: PropTypes.func
+    getEarthquakesAction: PropTypes.func,
+    receivedEarthquakes: PropTypes.object
   };
 
   getEarthquakes = () => {
@@ -16,18 +17,28 @@ class LegendContainer extends React.Component {
   };
 
   render() {
+    const earthquakes = this.props.receivedEarthquakes;
+
     return (
       <StyledLegend>
         <Button onClick={this.getEarthquakes}>Get Earthquakes</Button>
+        {earthquakes
+          ? earthquakes.features.map(earthquake => {
+              // TODO: change it with list component
+              return (
+                <div key={earthquake.id}>{earthquake.properties.place}</div>
+              );
+            })
+          : null}
       </StyledLegend>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { getEarthquakesAction } = state;
+  const { receivedEarthquakes } = state;
 
-  return { getEarthquakesAction };
+  return { receivedEarthquakes };
 };
 
 export default connect(mapStateToProps)(LegendContainer);

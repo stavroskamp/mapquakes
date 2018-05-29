@@ -10,7 +10,7 @@ const isFetching = (state = false, action) => {
   }
 };
 
-const receivedEarthquakes = (state = { quakesData: {} }, action) => {
+const receivedEarthquakes = (state = null, action) => {
   switch (action.type) {
     case RECEIVED_EARTHQUAKES:
       return { ...action.earthquakes };
