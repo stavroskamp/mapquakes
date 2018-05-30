@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getEarthquakesAction } from "../../actions";
 import { StyledLegend } from "./Legend.styles";
-import Button from "../../components/Button/Button";
+import { Button } from "../../components";
 import QuakesList from "../QuakesList/QuakesList";
 
 class Legend extends React.Component {

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Header from "./components/Header/Header";
-import MapArea from "./containers/MapArea/MapArea";
-import Legend from "./containers/Legend/Legend";
-import Footer from "./components/Footer/Footer";
+import { Header, Footer } from "./components";
+import { MapArea, Legend } from "./containers";
 import { StyledApp, BodyWrapper } from "./App.styles";
 
 class App extends Component {
