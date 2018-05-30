@@ -1,27 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getEarthquakesAction } from "../../actions";
-import { StyledLegend } from "./Legend.styles";
-import Button from "../../components/Button/Button";
+import { StyledQuakesList } from "./QuakesList.styles";
 
-class LegendContainer extends React.Component {
+class QuakesList extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    getEarthquakesAction: PropTypes.func,
     receivedEarthquakes: PropTypes.object
-  };
-
-  getEarthquakes = () => {
-    this.props.dispatch(getEarthquakesAction());
   };
 
   render() {
     const earthquakes = this.props.receivedEarthquakes;
-
     return (
-      <StyledLegend>
-        <Button onClick={this.getEarthquakes}>Get Earthquakes</Button>
+      <StyledQuakesList>
         {earthquakes
           ? earthquakes.features.map(earthquake => {
               // TODO: change it with list component
@@ -30,7 +21,7 @@ class LegendContainer extends React.Component {
               );
             })
           : null}
-      </StyledLegend>
+      </StyledQuakesList>
     );
   }
 }
@@ -41,4 +32,4 @@ const mapStateToProps = state => {
   return { receivedEarthquakes };
 };
 
-export default connect(mapStateToProps)(LegendContainer);
+export default connect(mapStateToProps)(QuakesList);

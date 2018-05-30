@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/Header/Header";
-import MapContainer from "./containers/MapContainer/Map";
-import LegendContainer from "./containers/LegendContainer/Legend";
+import MapArea from "./containers/MapArea/MapArea";
+import Legend from "./containers/Legend/Legend";
 import Footer from "./components/Footer/Footer";
 import { StyledApp, BodyWrapper } from "./App.styles";
 
@@ -11,8 +11,8 @@ class App extends Component {
       <StyledApp className="App">
         <Header />
         <BodyWrapper>
-          <MapContainer />
-          <LegendContainer />
+          <MapArea />
+          <Legend />
         </BodyWrapper>
         <Footer />
       </StyledApp>

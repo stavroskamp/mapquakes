@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Marker, Popup, TileLayer } from "react-leaflet";
-import { StyledMapWrapper, StyledMap } from "./Map.styles";
+import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
 
 const position = [51.505, -0.09];
 
-class MapContainer extends React.Component {
+class MapArea extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     receivedEarthquakes: PropTypes.object
@@ -50,4 +50,4 @@ const mapStateToProps = state => {
   return { receivedEarthquakes };
 };
 
-export default connect(mapStateToProps)(MapContainer);
+export default connect(mapStateToProps)(MapArea);
