@@ -5,6 +5,7 @@ import {
   setSelectedEarthquakeAction,
   setSelectedEarthquakeToNullAction
 } from "../../actions";
+import { MarkerPopup } from "../../components";
 import { Marker, Popup, TileLayer } from "react-leaflet";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
 
@@ -51,9 +52,8 @@ class MapArea extends React.Component {
                       this.onMarkerClick(earthquake);
                     }}
                   >
-                    {/* TODO: Change it with the card component  */}
                     <Popup>
-                      <span>{earthquake.properties.place}</span>
+                      <MarkerPopup info={earthquake} />
                     </Popup>
                   </Marker>
                 );
