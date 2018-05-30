@@ -8,18 +8,14 @@ import QuakesList from "../QuakesList/QuakesList";
 
 class Legend extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    getEarthquakesAction: PropTypes.func
-  };
-
-  getEarthquakes = () => {
-    this.props.dispatch(getEarthquakesAction());
+    getEarthquakesAction: PropTypes.func,
+    getEarthquakes: PropTypes.func
   };
 
   render() {
     return (
       <StyledLegend>
-        <Button onClick={this.getEarthquakes}>Get Earthquakes</Button>
+        <Button onClick={this.props.getEarthquakes}>Get Earthquakes</Button>
         <QuakesList />
       </StyledLegend>
     );
@@ -30,4 +26,8 @@ const mapStateToProps = () => {
   return {};
 };
 
-export default connect(mapStateToProps)(Legend);
+const mapDispatchToProps = dispatch => {
+  return { getEarthquakes: () => dispatch(getEarthquakesAction()) };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Legend);

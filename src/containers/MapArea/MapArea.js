@@ -1,15 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {
+  setSelectedEarthquakeAction,
+  setSelectedEarthquakeToNullAction
+} from "../../actions";
 import { Marker, Popup, TileLayer } from "react-leaflet";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
 
-const position = [51.505, -0.09];
+const position = [36.6547, 140.9389];
 
 class MapArea extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    receivedEarthquakes: PropTypes.object
+    receivedEarthquakes: PropTypes.object,
+    setSelectedEarthquake: PropTypes.func,
+    setSelectedEarthquakeToNull: PropTypes.func
+  };
+
+  onMarkerClick = earthquake => {
+    // Set the selected marker id
+    this.props.setSelectedEarthquake(earthquake);
+  };
+
+  handleMapClick = () => {
+    // Set the selected marker to null
+    this.props.setSelectedEarthquakeToNull();
   };
 
   render() {
@@ -17,7 +32,7 @@ class MapArea extends React.Component {
 
     return (
       <StyledMapWrapper>
-        <StyledMap center={position} zoom={13}>
+        <StyledMap onClick={this.handleMapClick} center={position} zoom={6}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -29,7 +44,13 @@ class MapArea extends React.Component {
                   earthquake.geometry.coordinates[0]
                 ];
                 return (
-                  <Marker key={earthquake.id} position={xy}>
+                  <Marker
+                    key={earthquake.id}
+                    position={xy}
+                    onClick={() => {
+                      this.onMarkerClick(earthquake);
+                    }}
+                  >
                     {/* TODO: Change it with the card component  */}
                     <Popup>
                       <span>{earthquake.properties.place}</span>
@@ -50,4 +71,13 @@ const mapStateToProps = state => {
   return { receivedEarthquakes };
 };
 
-export default connect(mapStateToProps)(MapArea);
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedEarthquake: earthquake =>
+      dispatch(setSelectedEarthquakeAction(earthquake)),
+    setSelectedEarthquakeToNull: () =>
+      dispatch(setSelectedEarthquakeToNullAction())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapArea);

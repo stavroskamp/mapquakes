@@ -1,7 +1,12 @@
 import { combineReducers } from "redux";
-import { SET_IS_FETCHING, RECEIVED_EARTHQUAKES } from "../actions";
+import {
+  SET_IS_FETCHING,
+  RECEIVED_EARTHQUAKES,
+  SET_SELECTED_EARTHQUAKE,
+  SET_SELECTED_EARTHQUAKE_TO_NULL
+} from "../actions";
 
-const isFetching = (state = false, action) => {
+const setIsFetching = (state = false, action) => {
   switch (action.type) {
     case SET_IS_FETCHING:
       return action.isFetching;
@@ -19,9 +24,21 @@ const receivedEarthquakes = (state = null, action) => {
   }
 };
 
+const selectedEarthquake = (state = null, action) => {
+  switch (action.type) {
+    case SET_SELECTED_EARTHQUAKE:
+      return action.selectedEarthquake.id;
+    case SET_SELECTED_EARTHQUAKE_TO_NULL:
+      return null;
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
-  isFetching,
-  receivedEarthquakes
+  setIsFetching,
+  receivedEarthquakes,
+  selectedEarthquake
 });
 
 export default rootReducer;
