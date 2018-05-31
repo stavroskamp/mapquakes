@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ListCircle } from "../../components";
+import { ListGroup, ListGroupItem } from "reactstrap";
 import { connect } from "react-redux";
 import { StyledQuakesList } from "./QuakesList.styles";
 
@@ -13,14 +15,18 @@ class QuakesList extends React.Component {
     const earthquakes = this.props.receivedEarthquakes;
     return (
       <StyledQuakesList>
-        {earthquakes
-          ? earthquakes.features.map(earthquake => {
-              // TODO: change it with list component
-              return (
-                <div key={earthquake.id}>{earthquake.properties.place}</div>
-              );
-            })
-          : null}
+        <ListGroup>
+          {earthquakes
+            ? earthquakes.features.map(earthquake => {
+                return (
+                  <ListGroupItem key={earthquake.id}>
+                    <ListCircle mag={earthquake.properties.mag} />
+                    {earthquake.properties.place}
+                  </ListGroupItem>
+                );
+              })
+            : null}
+        </ListGroup>
       </StyledQuakesList>
     );
   }

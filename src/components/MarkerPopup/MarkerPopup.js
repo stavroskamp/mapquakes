@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Card, CardHeader, CardBody, CardText } from "reactstrap";
 import { StyledMarkerPopup } from "./MarkerPopup.styles";
 
@@ -17,6 +18,10 @@ const MarkerPopup = props => {
       </Card>
     </StyledMarkerPopup>
   );
+};
+
+MarkerPopup.propTypes = {
+  info: PropTypes.object
 };
 
 export default MarkerPopup;
