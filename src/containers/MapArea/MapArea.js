@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   setSelectedEarthquakeAction,
-  setSelectedEarthquakeToNullAction
+  setSelectedEarthquakeToNullAction,
+  getEarthquakesAction
 } from "../../actions";
 import { MarkerPopup } from "../../components";
 import { Marker, Popup, TileLayer } from "react-leaflet";
@@ -15,8 +16,13 @@ class MapArea extends React.Component {
   static propTypes = {
     receivedEarthquakes: PropTypes.object,
     setSelectedEarthquake: PropTypes.func,
-    setSelectedEarthquakeToNull: PropTypes.func
+    setSelectedEarthquakeToNull: PropTypes.func,
+    getEarthquakes: PropTypes.func
   };
+
+  componentDidMount() {
+    this.props.getEarthquakes();
+  }
 
   onMarkerClick = earthquake => {
     // Set the selected marker id
@@ -76,7 +82,8 @@ const mapDispatchToProps = dispatch => {
     setSelectedEarthquake: earthquake =>
       dispatch(setSelectedEarthquakeAction(earthquake)),
     setSelectedEarthquakeToNull: () =>
-      dispatch(setSelectedEarthquakeToNullAction())
+      dispatch(setSelectedEarthquakeToNullAction()),
+    getEarthquakes: () => dispatch(getEarthquakesAction())
   };
 };
 

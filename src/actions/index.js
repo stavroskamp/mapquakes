@@ -44,9 +44,7 @@ export const setSelectedEarthquakeToNullAction = () => {
 
 const getEarthquakesRequest = () => {
   return axios
-    .get(
-      `${API_URL_BASE}query?format=geojson&starttime=2014-01-01&endtime=2014-01-02`
-    )
+    .get(`${API_URL_BASE}query?format=geojson&limit=100&orderby=time`)
     .then(res => res.data);
 };
 
@@ -56,6 +54,5 @@ export const getEarthquakesAction = () => {
     const earthquakes = await getEarthquakesRequest();
     dispatch(receivedEarthquakesAction(earthquakes));
     dispatch(setIsFetching(false));
-    console.log("--- the quakes", earthquakes);
   };
 };
