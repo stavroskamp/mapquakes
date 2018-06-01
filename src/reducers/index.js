@@ -3,7 +3,8 @@ import {
   SET_IS_FETCHING,
   RECEIVED_EARTHQUAKES,
   SET_SELECTED_EARTHQUAKE,
-  SET_SELECTED_EARTHQUAKE_TO_NULL
+  SET_SELECTED_EARTHQUAKE_TO_NULL,
+  SET_SEARCH_LIST_FILTER_VALUE
 } from "../actions";
 
 const setIsFetching = (state = false, action) => {
@@ -35,10 +36,20 @@ const selectedEarthquake = (state = null, action) => {
   }
 };
 
+const quakesListFilters = (state = { searchListFilterValue: "" }, action) => {
+  switch (action.type) {
+    case SET_SEARCH_LIST_FILTER_VALUE:
+      return { ...{ searchListFilterValue: action.searchListFilterValue } };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   setIsFetching,
   receivedEarthquakes,
-  selectedEarthquake
+  selectedEarthquake,
+  quakesListFilters
 });
 
 export default rootReducer;

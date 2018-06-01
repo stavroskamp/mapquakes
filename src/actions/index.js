@@ -6,6 +6,7 @@ export const RECEIVED_EARTHQUAKES = "RECEIVED_EARTHQUAKES";
 export const SET_SELECTED_EARTHQUAKE = "SELECT_SPECIFIC_EARTHQUAKE";
 export const SET_SELECTED_EARTHQUAKE_TO_NULL =
   "SET_SELECTED_EARTHQUAKE_TO_NULL";
+export const SET_SEARCH_LIST_FILTER_VALUE = "SET_SEARCH_LIST_FILTER_VALUE";
 
 export const setIsFetching = isFetching => {
   return dispatch => {
@@ -38,6 +39,15 @@ export const setSelectedEarthquakeToNullAction = () => {
   return dispatch => {
     dispatch({
       type: SET_SELECTED_EARTHQUAKE_TO_NULL
+    });
+  };
+};
+
+export const setSearchListFilterValueAction = searchListFilterValue => {
+  return dispatch => {
+    dispatch({
+      type: SET_SEARCH_LIST_FILTER_VALUE,
+      searchListFilterValue
     });
   };
 };
