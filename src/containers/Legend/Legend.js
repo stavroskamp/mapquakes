@@ -8,7 +8,8 @@ import { SearchInput, QuakesList } from "../../components";
 class Legend extends React.Component {
   static propTypes = {
     receivedEarthquakes: PropTypes.object,
-    setSearchListFilterValue: PropTypes.func
+    setSearchListFilterValue: PropTypes.func,
+    quakesListFilters: PropTypes.object
   };
 
   render() {
@@ -20,16 +21,19 @@ class Legend extends React.Component {
             this.props.setSearchListFilterValue(e.target.value);
           }}
         />
-        <QuakesList earthquakes={this.props.receivedEarthquakes} />
+        <QuakesList
+          earthquakes={this.props.receivedEarthquakes}
+          filters={this.props.quakesListFilters}
+        />
       </StyledLegend>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { receivedEarthquakes } = state;
+  const { receivedEarthquakes, quakesListFilters } = state;
 
-  return { receivedEarthquakes };
+  return { receivedEarthquakes, quakesListFilters };
 };
 
 const mapDispatchToProps = dispatch => {
