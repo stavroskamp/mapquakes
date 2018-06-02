@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
+import { NEWEST_QUAKE_FILTER } from "../constants";
 import {
   SET_IS_FETCHING,
   RECEIVED_EARTHQUAKES,
   SET_SELECTED_EARTHQUAKE,
   SET_SELECTED_EARTHQUAKE_TO_NULL,
-  SET_SEARCH_LIST_FILTER_VALUE
+  SET_SEARCH_LIST_VALUE,
+  SET_LIST_FILTERING_VALUE
 } from "../actions";
 
 const setIsFetching = (state = false, action) => {
@@ -36,10 +38,18 @@ const selectedEarthquake = (state = null, action) => {
   }
 };
 
-const quakesListFilters = (state = { searchListFilterValue: "" }, action) => {
+const quakesListFilters = (
+  state = {
+    searchListValue: "",
+    listFilterValue: NEWEST_QUAKE_FILTER
+  },
+  action
+) => {
   switch (action.type) {
-    case SET_SEARCH_LIST_FILTER_VALUE:
-      return { ...{ searchListFilterValue: action.searchListFilterValue } };
+    case SET_SEARCH_LIST_VALUE:
+      return { ...state, searchListValue: action.searchListValue };
+    case SET_LIST_FILTERING_VALUE:
+      return { ...state, listFilterValue: action.listFilterValue };
     default:
       return state;
   }

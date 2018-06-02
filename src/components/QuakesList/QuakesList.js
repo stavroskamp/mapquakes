@@ -15,7 +15,7 @@ const QuakesList = ({ earthquakes, filters }) => {
               .filter(earthquake =>
                 includes(
                   earthquake.properties.place.toLowerCase(),
-                  filters.searchListFilterValue.toLowerCase()
+                  filters.searchListValue.toLowerCase()
                 )
               )
               .map(earthquake => {

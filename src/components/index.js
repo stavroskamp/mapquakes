@@ -5,3 +5,6 @@ export { default as MarkerPopup } from "./MarkerPopup/MarkerPopup";
 export { default as ListCircle } from "./ListCircle/ListCircle";
 export { default as SearchInput } from "./SearchInput/SearchInput";
 export { default as QuakesList } from "./QuakesList/QuakesList";
+export {
+  default as ListDropdownFilter
+} from "./ListDropdownFilter/ListDropdownFilter";
