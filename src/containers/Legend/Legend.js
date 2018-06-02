@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import {
   setSearchListValueAction,
   setListFilteringValueAction,
-  setselectedEarthquakeIdAction
+  setselectedEarthquakeIdAction,
+  setCenterOfMapAction,
+  setZoomLevelOfMapAction
 } from "../../actions";
+import { MAP_ZOOM_LEVEL_WHEN_SELECTED } from "../../constants";
 import { connect } from "react-redux";
 import { StyledLegend } from "./Legend.styles";
 import { SearchInput, QuakesList, ListDropdownFilter } from "../../components";
@@ -68,8 +71,16 @@ const mapDispatchToProps = dispatch => {
     setsearchListValue: value => dispatch(setSearchListValueAction(value)),
     setListFilteringValue: value =>
       dispatch(setListFilteringValueAction(value)),
-    setselectedEarthquakeId: earthquake =>
-      dispatch(setselectedEarthquakeIdAction(earthquake))
+    setselectedEarthquakeId: earthquake => {
+      dispatch(setselectedEarthquakeIdAction(earthquake.id));
+      dispatch(
+        setCenterOfMapAction([
+          earthquake.geometry.coordinates[1],
+          earthquake.geometry.coordinates[0]
+        ])
+      );
+      dispatch(setZoomLevelOfMapAction(MAP_ZOOM_LEVEL_WHEN_SELECTED));
+    }
   };
 };
 

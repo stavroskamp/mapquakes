@@ -12,3 +12,8 @@ export const M2_5_QUAKE = "darkseagreen";
 export const M4_5_QUAKE = "sandybrown";
 export const M6_5_QUAKE = "palevioletred";
 export const M6_5_PLUS_QUAKE = "slateblue";
+
+// Map
+export const MAP_CENTER_POSITION = [26.5, 11.9];
+export const MAP_ZOOM_LEVEL = 3;
+export const MAP_ZOOM_LEVEL_WHEN_SELECTED = 10;

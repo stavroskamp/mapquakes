@@ -43,7 +43,7 @@ const QuakesList = ({ earthquakes, filters, selectEarthquake }) => {
               .map(earthquake => {
                 return (
                   <ListGroupItem
-                    onClick={() => selectEarthquake(earthquake.id)}
+                    onClick={() => selectEarthquake(earthquake)}
                     key={earthquake.id}
                   >
                     <ListCircle mag={earthquake.properties.mag} />

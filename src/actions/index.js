@@ -8,6 +8,8 @@ export const SET_SELECTED_EARTHQUAKE_TO_NULL =
   "SET_SELECTED_EARTHQUAKE_TO_NULL";
 export const SET_SEARCH_LIST_VALUE = "SET_SEARCH_LIST_VALUE";
 export const SET_LIST_FILTERING_VALUE = "SET_LIST_FILTERING_VALUE";
+export const SET_CENTER_OF_MAP = "SET_CENTER_OF_MAP";
+export const SET_ZOOM_LEVEL_OF_MAP = "SET_ZOOM_LEVEL_OF_MAP";
 
 export const setIsFetching = isFetching => {
   return dispatch => {
@@ -58,6 +60,24 @@ export const setListFilteringValueAction = listFilterValue => {
     dispatch({
       type: SET_LIST_FILTERING_VALUE,
       listFilterValue
+    });
+  };
+};
+
+export const setCenterOfMapAction = centerOfMap => {
+  return dispatch => {
+    dispatch({
+      type: SET_CENTER_OF_MAP,
+      centerOfMap
+    });
+  };
+};
+
+export const setZoomLevelOfMapAction = zoomLevelOfMap => {
+  return dispatch => {
+    dispatch({
+      type: SET_ZOOM_LEVEL_OF_MAP,
+      zoomLevelOfMap
     });
   };
 };

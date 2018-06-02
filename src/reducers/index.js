@@ -1,12 +1,18 @@
 import { combineReducers } from "redux";
-import { NEWEST_QUAKE_FILTER } from "../constants";
+import {
+  NEWEST_QUAKE_FILTER,
+  MAP_CENTER_POSITION,
+  MAP_ZOOM_LEVEL
+} from "../constants";
 import {
   SET_IS_FETCHING,
   RECEIVED_EARTHQUAKES,
   SET_SELECTED_EARTHQUAKE,
   SET_SELECTED_EARTHQUAKE_TO_NULL,
   SET_SEARCH_LIST_VALUE,
-  SET_LIST_FILTERING_VALUE
+  SET_LIST_FILTERING_VALUE,
+  SET_CENTER_OF_MAP,
+  SET_ZOOM_LEVEL_OF_MAP
 } from "../actions";
 
 const setIsFetching = (state = false, action) => {
@@ -38,6 +44,24 @@ const selectedEarthquakeId = (state = null, action) => {
   }
 };
 
+const centerOfMap = (state = MAP_CENTER_POSITION, action) => {
+  switch (action.type) {
+    case SET_CENTER_OF_MAP:
+      return action.centerOfMap;
+    default:
+      return state;
+  }
+};
+
+const zoomLevelOfMap = (state = MAP_ZOOM_LEVEL, action) => {
+  switch (action.type) {
+    case SET_ZOOM_LEVEL_OF_MAP:
+      return action.zoomLevelOfMap;
+    default:
+      return state;
+  }
+};
+
 const quakesListFilters = (
   state = {
     searchListValue: "",
@@ -59,6 +83,8 @@ const rootReducer = combineReducers({
   setIsFetching,
   receivedEarthquakes,
   selectedEarthquakeId,
+  centerOfMap,
+  zoomLevelOfMap,
   quakesListFilters
 });
 

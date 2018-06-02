@@ -4,20 +4,22 @@ import { connect } from "react-redux";
 import {
   setselectedEarthquakeIdAction,
   setselectedEarthquakeIdToNullAction,
-  getEarthquakesAction
+  getEarthquakesAction,
+  setZoomLevelOfMapAction
 } from "../../actions";
 import { MarkerPopup } from "../../components";
 import { Marker, Popup, TileLayer } from "react-leaflet";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
-
-const position = [36.6547, 140.9389];
 
 class MapArea extends React.Component {
   static propTypes = {
     receivedEarthquakes: PropTypes.object,
     setselectedEarthquakeId: PropTypes.func,
     setselectedEarthquakeIdToNull: PropTypes.func,
-    getEarthquakes: PropTypes.func
+    getEarthquakes: PropTypes.func,
+    centerOfMap: PropTypes.array,
+    zoomLevelOfMap: PropTypes.number,
+    setZoomLevelOfMap: PropTypes.func
   };
 
   componentDidMount() {
@@ -39,7 +41,12 @@ class MapArea extends React.Component {
 
     return (
       <StyledMapWrapper>
-        <StyledMap onClick={this.handleMapClick} center={position} zoom={6}>
+        <StyledMap
+          onClick={this.handleMapClick}
+          center={this.props.centerOfMap}
+          zoom={this.props.zoomLevelOfMap}
+          onZoomend={e => this.props.setZoomLevelOfMap(e.target._zoom)}
+        >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -72,9 +79,9 @@ class MapArea extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { receivedEarthquakes } = state;
+  const { receivedEarthquakes, centerOfMap, zoomLevelOfMap } = state;
 
-  return { receivedEarthquakes };
+  return { receivedEarthquakes, centerOfMap, zoomLevelOfMap };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -83,7 +90,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(setselectedEarthquakeIdAction(earthquake)),
     setselectedEarthquakeIdToNull: () =>
       dispatch(setselectedEarthquakeIdToNullAction()),
-    getEarthquakes: () => dispatch(getEarthquakesAction())
+    getEarthquakes: () => dispatch(getEarthquakesAction()),
+    setZoomLevelOfMap: zoomLevel => dispatch(setZoomLevelOfMapAction(zoomLevel))
   };
 };
 
