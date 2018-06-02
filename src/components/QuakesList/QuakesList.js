@@ -4,6 +4,12 @@ import includes from "lodash/includes";
 import { ListCircle } from "../../components";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { StyledQuakesList } from "./QuakesList.styles";
+import {
+  NEWEST_QUAKE_FILTER,
+  OLDEST_QUAKE_FILTER,
+  STRONGEST_QUAKE_FILTER,
+  WEAKEST_QUAKE_FILTER
+} from "../../constants";
 
 const QuakesList = ({ earthquakes, filters }) => {
   return (
@@ -18,6 +24,20 @@ const QuakesList = ({ earthquakes, filters }) => {
                   filters.searchListValue.toLowerCase()
                 )
               )
+              .sort((a, b) => {
+                if (filters.listFilterValue === NEWEST_QUAKE_FILTER) {
+                  return b.properties.time - a.properties.time;
+                }
+                if (filters.listFilterValue === OLDEST_QUAKE_FILTER) {
+                  return a.properties.time - b.properties.time;
+                }
+                if (filters.listFilterValue === STRONGEST_QUAKE_FILTER) {
+                  return b.properties.mag - a.properties.mag;
+                }
+                if (filters.listFilterValue === WEAKEST_QUAKE_FILTER) {
+                  return a.properties.mag - b.properties.mag;
+                }
+              })
               .map(earthquake => {
                 return (
                   <ListGroupItem key={earthquake.id}>
