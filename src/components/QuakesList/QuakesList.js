@@ -25,19 +25,20 @@ const QuakesList = ({ earthquakes, filters }) => {
                 )
               )
               .sort((a, b) => {
+                let sorted;
                 if (filters.listFilterValue === NEWEST_QUAKE_FILTER) {
-                  return b.properties.time - a.properties.time;
+                  return (sorted = b.properties.time - a.properties.time);
                 }
                 if (filters.listFilterValue === OLDEST_QUAKE_FILTER) {
-                  return a.properties.time - b.properties.time;
+                  return (sorted = a.properties.time - b.properties.time);
                 }
                 if (filters.listFilterValue === STRONGEST_QUAKE_FILTER) {
-                  return b.properties.mag - a.properties.mag;
+                  return (sorted = b.properties.mag - a.properties.mag);
                 }
                 if (filters.listFilterValue === WEAKEST_QUAKE_FILTER) {
-                  return a.properties.mag - b.properties.mag;
+                  return (sorted = a.properties.mag - b.properties.mag);
                 }
-                return false;
+                return sorted;
               })
               .map(earthquake => {
                 return (
