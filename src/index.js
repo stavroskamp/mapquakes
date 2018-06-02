@@ -8,6 +8,9 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import "typeface-open-sans";
+import smoothscroll from "smoothscroll-polyfill";
+smoothscroll.polyfill();
+window.__forceSmoothScrollPolyfill__ = true;
 
 const middleware = applyMiddleware(thunk);
 
