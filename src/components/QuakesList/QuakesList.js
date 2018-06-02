@@ -37,6 +37,7 @@ const QuakesList = ({ earthquakes, filters }) => {
                 if (filters.listFilterValue === WEAKEST_QUAKE_FILTER) {
                   return a.properties.mag - b.properties.mag;
                 }
+                return false;
               })
               .map(earthquake => {
                 return (
