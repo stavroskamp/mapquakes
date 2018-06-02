@@ -27,10 +27,10 @@ const receivedEarthquakes = (state = null, action) => {
   }
 };
 
-const selectedEarthquake = (state = null, action) => {
+const selectedEarthquakeId = (state = null, action) => {
   switch (action.type) {
     case SET_SELECTED_EARTHQUAKE:
-      return action.selectedEarthquake.id;
+      return action.selectedEarthquakeId;
     case SET_SELECTED_EARTHQUAKE_TO_NULL:
       return null;
     default:
@@ -58,7 +58,7 @@ const quakesListFilters = (
 const rootReducer = combineReducers({
   setIsFetching,
   receivedEarthquakes,
-  selectedEarthquake,
+  selectedEarthquakeId,
   quakesListFilters
 });
 

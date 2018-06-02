@@ -27,16 +27,16 @@ export const receivedEarthquakesAction = earthquakes => {
   };
 };
 
-export const setSelectedEarthquakeAction = selectedEarthquake => {
+export const setselectedEarthquakeIdAction = selectedEarthquakeId => {
   return dispatch => {
     dispatch({
       type: SET_SELECTED_EARTHQUAKE,
-      selectedEarthquake
+      selectedEarthquakeId
     });
   };
 };
 
-export const setSelectedEarthquakeToNullAction = () => {
+export const setselectedEarthquakeIdToNullAction = () => {
   return dispatch => {
     dispatch({
       type: SET_SELECTED_EARTHQUAKE_TO_NULL

@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
-  setSelectedEarthquakeAction,
-  setSelectedEarthquakeToNullAction,
+  setselectedEarthquakeIdAction,
+  setselectedEarthquakeIdToNullAction,
   getEarthquakesAction
 } from "../../actions";
 import { MarkerPopup } from "../../components";
@@ -15,8 +15,8 @@ const position = [36.6547, 140.9389];
 class MapArea extends React.Component {
   static propTypes = {
     receivedEarthquakes: PropTypes.object,
-    setSelectedEarthquake: PropTypes.func,
-    setSelectedEarthquakeToNull: PropTypes.func,
+    setselectedEarthquakeId: PropTypes.func,
+    setselectedEarthquakeIdToNull: PropTypes.func,
     getEarthquakes: PropTypes.func
   };
 
@@ -26,12 +26,12 @@ class MapArea extends React.Component {
 
   onMarkerClick = earthquake => {
     // Set the selected marker id
-    this.props.setSelectedEarthquake(earthquake);
+    this.props.setselectedEarthquakeId(earthquake.id);
   };
 
   handleMapClick = () => {
     // Set the selected marker to null
-    this.props.setSelectedEarthquakeToNull();
+    this.props.setselectedEarthquakeIdToNull();
   };
 
   render() {
@@ -79,10 +79,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setSelectedEarthquake: earthquake =>
-      dispatch(setSelectedEarthquakeAction(earthquake)),
-    setSelectedEarthquakeToNull: () =>
-      dispatch(setSelectedEarthquakeToNullAction()),
+    setselectedEarthquakeId: earthquake =>
+      dispatch(setselectedEarthquakeIdAction(earthquake)),
+    setselectedEarthquakeIdToNull: () =>
+      dispatch(setselectedEarthquakeIdToNullAction()),
     getEarthquakes: () => dispatch(getEarthquakesAction())
   };
 };

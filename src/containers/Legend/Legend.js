@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   setSearchListValueAction,
-  setListFilteringValueAction
+  setListFilteringValueAction,
+  setselectedEarthquakeIdAction
 } from "../../actions";
 import { connect } from "react-redux";
 import { StyledLegend } from "./Legend.styles";
@@ -13,7 +14,8 @@ class Legend extends React.Component {
     receivedEarthquakes: PropTypes.object,
     setsearchListValue: PropTypes.func,
     quakesListFilters: PropTypes.object,
-    setListFilteringValue: PropTypes.func
+    setListFilteringValue: PropTypes.func,
+    setselectedEarthquakeId: PropTypes.func
   };
 
   constructor(props) {
@@ -48,6 +50,7 @@ class Legend extends React.Component {
         <QuakesList
           earthquakes={this.props.receivedEarthquakes}
           filters={this.props.quakesListFilters}
+          selectEarthquake={this.props.setselectedEarthquakeId}
         />
       </StyledLegend>
     );
@@ -63,7 +66,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setsearchListValue: value => dispatch(setSearchListValueAction(value)),
-    setListFilteringValue: value => dispatch(setListFilteringValueAction(value))
+    setListFilteringValue: value =>
+      dispatch(setListFilteringValueAction(value)),
+    setselectedEarthquakeId: earthquake =>
+      dispatch(setselectedEarthquakeIdAction(earthquake))
   };
 };
 

@@ -11,7 +11,7 @@ import {
   WEAKEST_QUAKE_FILTER
 } from "../../constants";
 
-const QuakesList = ({ earthquakes, filters }) => {
+const QuakesList = ({ earthquakes, filters, selectEarthquake }) => {
   return (
     <StyledQuakesList>
       <ListGroup>
@@ -42,7 +42,10 @@ const QuakesList = ({ earthquakes, filters }) => {
               })
               .map(earthquake => {
                 return (
-                  <ListGroupItem key={earthquake.id}>
+                  <ListGroupItem
+                    onClick={() => selectEarthquake(earthquake.id)}
+                    key={earthquake.id}
+                  >
                     <ListCircle mag={earthquake.properties.mag} />
                     {earthquake.properties.place}
                   </ListGroupItem>
@@ -56,7 +59,8 @@ const QuakesList = ({ earthquakes, filters }) => {
 
 QuakesList.propTypes = {
   earthquakes: PropTypes.object,
-  filters: PropTypes.object
+  filters: PropTypes.object,
+  selectEarthquake: PropTypes.func
 };
 
 export default QuakesList;
