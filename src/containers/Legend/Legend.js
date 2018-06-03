@@ -9,7 +9,7 @@ import {
 } from "../../actions";
 import { MAP_ZOOM_LEVEL_WHEN_SELECTED } from "../../constants";
 import { connect } from "react-redux";
-import { StyledLegend } from "./Legend.styles";
+import { StyledLegend, StyledSearchWrapper } from "./Legend.styles";
 import { SearchInput, QuakesList, ListDropdownFilter } from "../../components";
 
 class Legend extends React.Component {
@@ -39,17 +39,28 @@ class Legend extends React.Component {
   render() {
     return (
       <StyledLegend>
-        <SearchInput
-          onChange={e => {
-            this.props.setsearchListValue(e.target.value);
-          }}
-        />
-        <ListDropdownFilter
-          isOpen={this.state.listDropdownFilterIsOpen}
-          toggle={this.toggleDropdown}
-          dropdownLabel={this.props.quakesListFilters.listFilterValue}
-          setSelectedFilter={this.props.setListFilteringValue}
-        />
+        <StyledSearchWrapper>
+          <SearchInput
+            id="quakes-search-input"
+            placeholder="Search..."
+            value={this.props.quakesListFilters.searchListValue}
+            onChange={e => {
+              this.props.setsearchListValue(e.target.value);
+            }}
+            clearSearchInput={() => {
+              this.props.setsearchListValue("");
+              // not best practise but it works
+              document.querySelector("#quakes-search-input").focus();
+            }}
+          />
+          <ListDropdownFilter
+            isOpen={this.state.listDropdownFilterIsOpen}
+            toggle={this.toggleDropdown}
+            dropdownLabel={this.props.quakesListFilters.listFilterValue}
+            setSelectedFilter={this.props.setListFilteringValue}
+          />
+        </StyledSearchWrapper>
+
         <QuakesList
           earthquakes={this.props.receivedEarthquakes}
           filters={this.props.quakesListFilters}

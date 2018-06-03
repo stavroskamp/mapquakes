@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { StyledListDropdownFilter } from "./ListDropdownFilter.styles";
+import { TiFilter } from "react-icons/lib/ti/";
 import {
   NEWEST_QUAKE_FILTER,
   OLDEST_QUAKE_FILTER,
@@ -23,7 +24,9 @@ const ListDropdownFilter = ({
   ];
   return (
     <StyledListDropdownFilter isOpen={isOpen} toggle={toggle}>
-      <DropdownToggle caret>Filtered by {dropdownLabel}</DropdownToggle>
+      <DropdownToggle caret>
+        <TiFilter /> {dropdownLabel}
+      </DropdownToggle>
       <DropdownMenu>
         {filters.map((eachFilter, index) => {
           return (

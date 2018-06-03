@@ -5,3 +5,7 @@ export const StyledLegend = styled.div`
   width: 26%;
   background-color: beige;
 `;
+
+export const StyledSearchWrapper = styled.div`
+  display: flex;
+`;
