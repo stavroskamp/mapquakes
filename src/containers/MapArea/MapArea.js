@@ -9,6 +9,8 @@ import {
 } from "../../actions";
 import { MarkerPopup } from "../../components";
 import { Marker, Popup, TileLayer } from "react-leaflet";
+import "react-leaflet-markercluster/dist/styles.min.css";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
 
 class MapArea extends React.Component {
@@ -53,27 +55,29 @@ class MapArea extends React.Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
-          {earthquakes
-            ? earthquakes.features.map(earthquake => {
-                const xy = [
-                  earthquake.geometry.coordinates[1],
-                  earthquake.geometry.coordinates[0]
-                ];
-                return (
-                  <Marker
-                    key={earthquake.id}
-                    position={xy}
-                    onClick={() => {
-                      this.onMarkerClick(earthquake);
-                    }}
-                  >
-                    <Popup>
-                      <MarkerPopup info={earthquake} />
-                    </Popup>
-                  </Marker>
-                );
-              })
-            : null}
+          <MarkerClusterGroup>
+            {earthquakes
+              ? earthquakes.features.map(earthquake => {
+                  const xy = [
+                    earthquake.geometry.coordinates[1],
+                    earthquake.geometry.coordinates[0]
+                  ];
+                  return (
+                    <Marker
+                      key={earthquake.id}
+                      position={xy}
+                      onClick={() => {
+                        this.onMarkerClick(earthquake);
+                      }}
+                    >
+                      <Popup>
+                        <MarkerPopup info={earthquake} />
+                      </Popup>
+                    </Marker>
+                  );
+                })
+              : null}
+          </MarkerClusterGroup>
         </StyledMap>
       </StyledMapWrapper>
     );
