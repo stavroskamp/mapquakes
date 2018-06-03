@@ -12,6 +12,15 @@ import { Marker, Popup, TileLayer } from "react-leaflet";
 import "react-leaflet-markercluster/dist/styles.min.css";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
+import marker from "../../images/map-marker.png";
+import { Icon } from "leaflet";
+
+// TODO: move it somewher else, maybe add colors
+const image = new Icon({
+  iconUrl: marker,
+  shadowUrl: marker,
+  popupAnchor: [16, -2] // point from which the popup should open relative to the iconAnchor
+});
 
 class MapArea extends React.Component {
   static propTypes = {
@@ -66,6 +75,7 @@ class MapArea extends React.Component {
                     <Marker
                       key={earthquake.id}
                       position={xy}
+                      icon={image}
                       onClick={() => {
                         this.onMarkerClick(earthquake);
                       }}
