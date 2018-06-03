@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { InputGroup, InputGroupAddon, Button } from "reactstrap";
+import { Button } from "../../components";
+import { InputGroup, InputGroupAddon } from "reactstrap";
 import { StyledSearchInput, StyledClearIcon } from "./SearchInput.styles";
 
 const SearchInput = props => {

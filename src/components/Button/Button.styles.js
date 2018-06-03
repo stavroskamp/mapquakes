@@ -2,7 +2,8 @@ import Color from "color";
 import styled from "styled-components";
 import { Button } from "reactstrap";
 
-const mainColor = Color("rebeccapurple");
+// TODO: in the future pass color from props
+const mainColor = Color("#6c757d");
 
 export const StyledButton = styled(Button)`
   background-color: ${mainColor.hex()}!important;
@@ -12,7 +13,7 @@ export const StyledButton = styled(Button)`
     background-color: ${mainColor.darken(0.15).hex()}!important;
   }
   &:focus {
-    box-shadow: 0 0 0 0.2rem ${mainColor.lighten(0.75).hex()}!important;
+    box-shadow: none !important;
   }
   &:active {
     background-color: ${mainColor.darken(0.2).hex()}!important;
