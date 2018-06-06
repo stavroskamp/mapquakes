@@ -1,21 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "../../components";
-import { InputGroup, InputGroupAddon } from "reactstrap";
-import { StyledSearchInput, StyledClearIcon } from "./SearchInput.styles";
+import { InputGroupAddon } from "reactstrap";
+import {
+  StyledInputGroup,
+  StyledSearchInput,
+  StyledClearIcon
+} from "./SearchInput.styles";
 
 const SearchInput = props => {
   const { clearSearchInput, ...SearchInputProps } = props;
   return (
     <React.Fragment>
-      <InputGroup>
+      <StyledInputGroup>
         <StyledSearchInput {...SearchInputProps} />
         <InputGroupAddon addonType="append">
           <Button onClick={clearSearchInput}>
             <StyledClearIcon />
           </Button>
         </InputGroupAddon>
-      </InputGroup>
+      </StyledInputGroup>
     </React.Fragment>
   );
 };

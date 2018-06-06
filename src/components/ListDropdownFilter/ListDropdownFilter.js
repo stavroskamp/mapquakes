@@ -27,7 +27,7 @@ const ListDropdownFilter = ({
       <DropdownToggle caret>
         <TiFilter /> {dropdownLabel}
       </DropdownToggle>
-      <DropdownMenu>
+      <DropdownMenu right>
         {filters.map((eachFilter, index) => {
           return (
             <DropdownItem

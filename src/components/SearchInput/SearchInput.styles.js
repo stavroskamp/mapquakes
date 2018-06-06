@@ -1,6 +1,11 @@
 import styled from "styled-components";
-import { Input } from "reactstrap";
+import { Input, InputGroup } from "reactstrap";
 import { TiBackspace } from "react-icons/lib/ti/";
+
+export const StyledInputGroup = styled(InputGroup)`
+  width: 220px;
+`;
+
 export const StyledSearchInput = styled(Input)`
   width: 100%;
   &:focus {

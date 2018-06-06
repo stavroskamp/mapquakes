@@ -18,7 +18,8 @@ class Legend extends React.Component {
     setsearchListValue: PropTypes.func,
     quakesListFilters: PropTypes.object,
     setListFilteringValue: PropTypes.func,
-    setselectedEarthquakeId: PropTypes.func
+    setselectedEarthquakeId: PropTypes.func,
+    selectedEarthquakeId: PropTypes.string
   };
 
   constructor(props) {
@@ -65,6 +66,7 @@ class Legend extends React.Component {
           earthquakes={this.props.receivedEarthquakes}
           filters={this.props.quakesListFilters}
           selectEarthquake={this.props.setselectedEarthquakeId}
+          selectedEarthquakeId={this.props.selectedEarthquakeId}
         />
       </StyledLegend>
     );
@@ -72,9 +74,13 @@ class Legend extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { receivedEarthquakes, quakesListFilters } = state;
+  const {
+    receivedEarthquakes,
+    quakesListFilters,
+    selectedEarthquakeId
+  } = state;
 
-  return { receivedEarthquakes, quakesListFilters };
+  return { receivedEarthquakes, quakesListFilters, selectedEarthquakeId };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -95,4 +101,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Legend);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Legend);

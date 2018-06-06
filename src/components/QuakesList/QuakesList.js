@@ -1,9 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import includes from "lodash/includes";
+import moment from "moment";
 import { ListCircle } from "../../components";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { StyledQuakesList } from "./QuakesList.styles";
+import { ListGroup } from "reactstrap";
+import {
+  StyledQuakesList,
+  StyledListGroupItem,
+  StyledQuakeTextsWrapper,
+  StyledQuakeListPlace,
+  StyledQuakeListTime
+} from "./QuakesList.styles";
 import {
   NEWEST_QUAKE_FILTER,
   OLDEST_QUAKE_FILTER,
@@ -11,7 +18,12 @@ import {
   WEAKEST_QUAKE_FILTER
 } from "../../constants";
 
-const QuakesList = ({ earthquakes, filters, selectEarthquake }) => {
+const QuakesList = ({
+  earthquakes,
+  filters,
+  selectEarthquake,
+  selectedEarthquakeId
+}) => {
   return (
     <StyledQuakesList>
       <ListGroup>
@@ -42,14 +54,26 @@ const QuakesList = ({ earthquakes, filters, selectEarthquake }) => {
               })
               .map(earthquake => {
                 return (
-                  <ListGroupItem
+                  <StyledListGroupItem
                     onClick={() => selectEarthquake(earthquake)}
                     key={earthquake.id}
-                    className={"quake-list-" + earthquake.id}
+                    className={`quake-list-${earthquake.id} ${
+                      selectedEarthquakeId === earthquake.id ? "selected" : ""
+                    }`}
                   >
                     <ListCircle mag={earthquake.properties.mag} />
-                    {earthquake.properties.place}
-                  </ListGroupItem>
+                    <StyledQuakeTextsWrapper>
+                      <StyledQuakeListPlace className="quake-list-earthquake-place">
+                        {earthquake.properties.place}
+                      </StyledQuakeListPlace>
+                      <StyledQuakeListTime className="quake-list-earthquake-time">
+                        {moment(earthquake.properties.time).format(
+                          "MMMM Do YYYY, h:mm:ss a"
+                        )}
+                        {" (UTC)"}
+                      </StyledQuakeListTime>
+                    </StyledQuakeTextsWrapper>
+                  </StyledListGroupItem>
                 );
               })
           : null}
@@ -61,7 +85,8 @@ const QuakesList = ({ earthquakes, filters, selectEarthquake }) => {
 QuakesList.propTypes = {
   earthquakes: PropTypes.object,
   filters: PropTypes.object,
-  selectEarthquake: PropTypes.func
+  selectEarthquake: PropTypes.func,
+  selectedEarthquakeId: PropTypes.string
 };
 
 export default QuakesList;

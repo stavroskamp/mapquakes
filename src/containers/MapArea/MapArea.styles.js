@@ -3,7 +3,7 @@ import { Map as LeafletMap } from "react-leaflet";
 
 export const StyledMapWrapper = styled.div`
   height: 100%;
-  width: 74%;
+  width: calc(100% - 380px);
   background-color: skyblue;
 `;
 
