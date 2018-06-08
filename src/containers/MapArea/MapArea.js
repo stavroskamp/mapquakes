@@ -41,7 +41,7 @@ class MapArea extends React.Component {
     // Set the selected marker id
     this.props.setselectedEarthquakeId(earthquake.id);
     const selector = ".quake-list-" + earthquake.id;
-    document.querySelector(selector).scrollIntoView({ behavior: "smooth" });
+    document.querySelector(selector).scrollIntoView({ behavior: "instant" });
   };
 
   handleMapClick = () => {

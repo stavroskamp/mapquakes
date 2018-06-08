@@ -84,7 +84,9 @@ export const setZoomLevelOfMapAction = zoomLevelOfMap => {
 
 const getEarthquakesRequest = () => {
   return axios
-    .get(`${API_URL_BASE}query?format=geojson&limit=100&orderby=time`)
+    .get(
+      `${API_URL_BASE}query?format=geojson&limit=200&orderby=time&minmagnitude=2.5`
+    )
     .then(res => res.data);
 };
 
