@@ -25,10 +25,10 @@ class Legend extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleDropdown = this.toggleDropdown.bind(this);
     this.state = {
       listDropdownFilterIsOpen: false
     };
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   toggleDropdown() {

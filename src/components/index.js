@@ -8,3 +8,9 @@ export { default as QuakesList } from "./QuakesList/QuakesList";
 export {
   default as ListDropdownFilter
 } from "./ListDropdownFilter/ListDropdownFilter";
+export {
+  default as ModalGetQuakes
+} from "./Modals/ModalGetQuakes/ModalGetQuakes";
+export {
+  default as ModalAboutInfo
+} from "./Modals/ModalAboutInfo/ModalAboutInfo";
