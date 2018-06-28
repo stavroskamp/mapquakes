@@ -12,7 +12,8 @@ import {
   SET_SEARCH_LIST_VALUE,
   SET_LIST_FILTERING_VALUE,
   SET_CENTER_OF_MAP,
-  SET_ZOOM_LEVEL_OF_MAP
+  SET_ZOOM_LEVEL_OF_MAP,
+  SET_EARTHQUAKE_SEARCH_PARAMS
 } from "../actions";
 
 const setIsFetching = (state = false, action) => {
@@ -62,6 +63,16 @@ const zoomLevelOfMap = (state = MAP_ZOOM_LEVEL, action) => {
   }
 };
 
+// TODO: use it in the get earthquakes modal
+const searchEarthquakeParams = (state = {}, action) => {
+  switch (action.type) {
+    case SET_EARTHQUAKE_SEARCH_PARAMS:
+      return action.earthquakeSearchParams;
+    default:
+      return state;
+  }
+};
+
 const quakesListFilters = (
   state = {
     searchListValue: "",
@@ -85,7 +96,8 @@ const rootReducer = combineReducers({
   selectedEarthquakeId,
   centerOfMap,
   zoomLevelOfMap,
-  quakesListFilters
+  quakesListFilters,
+  searchEarthquakeParams
 });
 
 export default rootReducer;

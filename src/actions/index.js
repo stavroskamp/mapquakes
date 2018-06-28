@@ -10,6 +10,7 @@ export const SET_SEARCH_LIST_VALUE = "SET_SEARCH_LIST_VALUE";
 export const SET_LIST_FILTERING_VALUE = "SET_LIST_FILTERING_VALUE";
 export const SET_CENTER_OF_MAP = "SET_CENTER_OF_MAP";
 export const SET_ZOOM_LEVEL_OF_MAP = "SET_ZOOM_LEVEL_OF_MAP";
+export const SET_EARTHQUAKE_SEARCH_PARAMS = "SET_EARTHQUAKE_SEARCH_PARAMS";
 
 export const setIsFetching = isFetching => {
   return dispatch => {
@@ -78,6 +79,15 @@ export const setZoomLevelOfMapAction = zoomLevelOfMap => {
     dispatch({
       type: SET_ZOOM_LEVEL_OF_MAP,
       zoomLevelOfMap
+    });
+  };
+};
+
+export const setEarthquakeSearchParamsAction = earthquakeSearchParams => {
+  return dispatch => {
+    dispatch({
+      type: SET_EARTHQUAKE_SEARCH_PARAMS,
+      earthquakeSearchParams
     });
   };
 };

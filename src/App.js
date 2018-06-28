@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Header } from "./components";
-import { MapArea, Legend } from "./containers";
+import { Header, MapArea, Legend } from "./containers";
 import { StyledApp, BodyWrapper } from "./App.styles";
 
 class App extends Component {
