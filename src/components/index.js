@@ -14,3 +14,4 @@ export {
 export {
   default as ModalAboutInfo
 } from "./Modals/ModalAboutInfo/ModalAboutInfo";
+export { default as Loading } from "./Loading/Loading";

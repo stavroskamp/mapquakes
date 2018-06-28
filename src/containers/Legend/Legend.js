@@ -10,7 +10,12 @@ import {
 import { MAP_ZOOM_LEVEL_WHEN_SELECTED } from "../../constants";
 import { connect } from "react-redux";
 import { StyledLegend, StyledSearchWrapper } from "./Legend.styles";
-import { SearchInput, QuakesList, ListDropdownFilter } from "../../components";
+import {
+  SearchInput,
+  QuakesList,
+  ListDropdownFilter,
+  Loading
+} from "../../components";
 
 class Legend extends React.Component {
   static propTypes = {
@@ -61,13 +66,16 @@ class Legend extends React.Component {
             setSelectedFilter={this.props.setListFilteringValue}
           />
         </StyledSearchWrapper>
-
-        <QuakesList
-          earthquakes={this.props.receivedEarthquakes}
-          filters={this.props.quakesListFilters}
-          selectEarthquake={this.props.setselectedEarthquakeId}
-          selectedEarthquakeId={this.props.selectedEarthquakeId}
-        />
+        {this.props.receivedEarthquakes ? (
+          <QuakesList
+            earthquakes={this.props.receivedEarthquakes}
+            filters={this.props.quakesListFilters}
+            selectEarthquake={this.props.setselectedEarthquakeId}
+            selectedEarthquakeId={this.props.selectedEarthquakeId}
+          />
+        ) : (
+          <Loading type={"spin"} color={"#ffff"} />
+        )}
       </StyledLegend>
     );
   }
