@@ -16,7 +16,7 @@ import {
   SET_EARTHQUAKE_SEARCH_PARAMS
 } from "../actions";
 
-const setIsFetching = (state = false, action) => {
+const isFetchingEarthquakes = (state = false, action) => {
   switch (action.type) {
     case SET_IS_FETCHING:
       return action.isFetching;
@@ -90,7 +90,7 @@ const quakesListFilters = (
 };
 
 const rootReducer = combineReducers({
-  setIsFetching,
+  isFetchingEarthquakes,
   receivedEarthquakes,
   selectedEarthquakeId,
   centerOfMap,

@@ -12,7 +12,7 @@ export const SET_CENTER_OF_MAP = "SET_CENTER_OF_MAP";
 export const SET_ZOOM_LEVEL_OF_MAP = "SET_ZOOM_LEVEL_OF_MAP";
 export const SET_EARTHQUAKE_SEARCH_PARAMS = "SET_EARTHQUAKE_SEARCH_PARAMS";
 
-export const setIsFetching = isFetching => {
+export const isFetchingEarthquakes = isFetching => {
   return dispatch => {
     dispatch({
       type: SET_IS_FETCHING,
@@ -92,14 +92,10 @@ export const setEarthquakeSearchParamsAction = earthquakeSearchParams => {
   };
 };
 
-const getEarthquakesRequest = params => {
-  return getAsyncEarthquakes(params);
-};
-
 export const getEarthquakesAction = params => {
   return async dispatch => {
-    dispatch(setIsFetching(true));
-    const earthquakes = await getEarthquakesRequest(params);
+    dispatch(isFetchingEarthquakes(true));
+    const earthquakes = await getAsyncEarthquakes(params);
 
     if (earthquakes.status) {
       toast.error("Error");
@@ -107,6 +103,6 @@ export const getEarthquakesAction = params => {
       dispatch(receivedEarthquakesAction(earthquakes));
       toast.success("Earthquakes loaded");
     }
-    dispatch(setIsFetching(false));
+    dispatch(isFetchingEarthquakes(false));
   };
 };

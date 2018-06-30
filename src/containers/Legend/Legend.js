@@ -24,7 +24,8 @@ class Legend extends React.Component {
     quakesListFilters: PropTypes.object,
     setListFilteringValue: PropTypes.func,
     setselectedEarthquakeId: PropTypes.func,
-    selectedEarthquakeId: PropTypes.string
+    selectedEarthquakeId: PropTypes.string,
+    isFetchingEarthquakes: PropTypes.bool
   };
 
   constructor(props) {
@@ -66,7 +67,7 @@ class Legend extends React.Component {
             setSelectedFilter={this.props.setListFilteringValue}
           />
         </StyledSearchWrapper>
-        {this.props.receivedEarthquakes ? (
+        {this.props.receivedEarthquakes && !this.props.isFetchingEarthquakes ? (
           <QuakesList
             earthquakes={this.props.receivedEarthquakes}
             filters={this.props.quakesListFilters}
@@ -85,10 +86,16 @@ const mapStateToProps = state => {
   const {
     receivedEarthquakes,
     quakesListFilters,
-    selectedEarthquakeId
+    selectedEarthquakeId,
+    isFetchingEarthquakes
   } = state;
 
-  return { receivedEarthquakes, quakesListFilters, selectedEarthquakeId };
+  return {
+    receivedEarthquakes,
+    quakesListFilters,
+    selectedEarthquakeId,
+    isFetchingEarthquakes
+  };
 };
 
 const mapDispatchToProps = dispatch => {
