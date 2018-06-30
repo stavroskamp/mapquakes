@@ -3,11 +3,15 @@ import PropTypes from "prop-types";
 import connect from "react-redux/lib/connect/connect";
 import { StyledHeader } from "./Header.styles";
 import { ModalGetQuakes, ModalAboutInfo } from "../../components";
-import { setEarthquakeSearchParamsAction } from "../../actions";
+import {
+  setEarthquakeSearchParamsAction,
+  getEarthquakesAction
+} from "../../actions";
 
 class Header extends React.Component {
   static propTypes = {
-    setEarthquakeSearchParams: PropTypes.func
+    setEarthquakeSearchParams: PropTypes.func,
+    getEarthquakes: PropTypes.func
   };
 
   render() {
@@ -15,6 +19,7 @@ class Header extends React.Component {
       <StyledHeader>
         <ModalGetQuakes
           setEarthquakeSearchParams={this.props.setEarthquakeSearchParams}
+          getEarthquakes={this.props.getEarthquakes}
         />
         <ModalAboutInfo />
       </StyledHeader>
@@ -29,7 +34,8 @@ const mapStateToProps = () => {
 const mapDispatchToProps = dispatch => {
   return {
     setEarthquakeSearchParams: params =>
-      dispatch(setEarthquakeSearchParamsAction(params))
+      dispatch(setEarthquakeSearchParamsAction(params)),
+    getEarthquakes: params => dispatch(getEarthquakesAction(params))
   };
 };
 

@@ -1,5 +1,5 @@
-import axios from "axios";
-import { API_URL_BASE } from "../constants";
+import { getAsyncEarthquakes } from "../libs/requests";
+import { toast } from "react-toastify";
 
 export const SET_IS_FETCHING = "SET_IS_FETCHING";
 export const RECEIVED_EARTHQUAKES = "RECEIVED_EARTHQUAKES";
@@ -92,19 +92,21 @@ export const setEarthquakeSearchParamsAction = earthquakeSearchParams => {
   };
 };
 
-const getEarthquakesRequest = () => {
-  return axios
-    .get(
-      `${API_URL_BASE}query?format=geojson&limit=200&orderby=time&minmagnitude=2.5`
-    )
-    .then(res => res.data);
+const getEarthquakesRequest = params => {
+  return getAsyncEarthquakes(params);
 };
 
-export const getEarthquakesAction = () => {
+export const getEarthquakesAction = params => {
   return async dispatch => {
     dispatch(setIsFetching(true));
-    const earthquakes = await getEarthquakesRequest();
-    dispatch(receivedEarthquakesAction(earthquakes));
+    const earthquakes = await getEarthquakesRequest(params);
+
+    if (earthquakes.status) {
+      toast.error("Error");
+    } else {
+      dispatch(receivedEarthquakesAction(earthquakes));
+      toast.success("Earthquakes loaded");
+    }
     dispatch(setIsFetching(false));
   };
 };

@@ -16,7 +16,8 @@ import "react-day-picker/lib/style.css";
 
 class ModalGetQuakes extends React.Component {
   static propTypes = {
-    setEarthquakeSearchParams: PropTypes.func
+    setEarthquakeSearchParams: PropTypes.func,
+    getEarthquakes: PropTypes.func
   };
 
   constructor(props) {
@@ -55,7 +56,7 @@ class ModalGetQuakes extends React.Component {
     delete params.isModalOpen;
 
     this.props.setEarthquakeSearchParams(params);
-    // TODO: make the earthquakes call
+    this.props.getEarthquakes(params);
     this.toggleModal();
   }
 
