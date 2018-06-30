@@ -97,12 +97,15 @@ export const getEarthquakesAction = params => {
     dispatch(isFetchingEarthquakes(true));
     const earthquakes = await getAsyncEarthquakes(params);
 
-    if (earthquakes.status) {
+    if (!earthquakes) {
+      toast.error("Failed to load earthquakes");
+    } else if (earthquakes.status) {
       toast.error("Error");
     } else {
       dispatch(receivedEarthquakesAction(earthquakes));
       toast.success("Earthquakes loaded");
     }
+
     dispatch(isFetchingEarthquakes(false));
   };
 };

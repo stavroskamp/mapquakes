@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers";
 import "./index.css";
+import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import "typeface-open-sans";
