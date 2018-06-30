@@ -13,7 +13,9 @@ class Header extends React.Component {
   render() {
     return (
       <StyledHeader>
-        <ModalGetQuakes />
+        <ModalGetQuakes
+          setEarthquakeSearchParams={this.props.setEarthquakeSearchParams}
+        />
         <ModalAboutInfo />
       </StyledHeader>
     );

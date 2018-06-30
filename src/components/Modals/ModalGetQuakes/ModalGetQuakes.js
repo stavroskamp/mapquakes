@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyledModal } from "../Modals.styles";
 import { Button } from "../../../components";
 import {
@@ -14,16 +15,23 @@ import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 class ModalGetQuakes extends React.Component {
+  static propTypes = {
+    setEarthquakeSearchParams: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
       isModalOpen: false,
       selectedFromDay: undefined,
-      selectedToDay: undefined
+      selectedToDay: undefined,
+      quakesUnder25: false
     };
-    this.toggleModal = this.toggleModal.bind(this);
 
+    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleUnder25Checkbox = this.toggleUnder25Checkbox.bind(this);
+    this.getMoreEarthquakes = this.getMoreEarthquakes.bind(this);
     this.handleFromDayChange = this.handleFromDayChange.bind(this);
     this.handleToDayChange = this.handleToDayChange.bind(this);
   }
@@ -32,6 +40,23 @@ class ModalGetQuakes extends React.Component {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen
     }));
+  }
+
+  toggleUnder25Checkbox() {
+    this.setState(prevState => ({
+      quakesUnder25: !prevState.quakesUnder25
+    }));
+  }
+
+  getMoreEarthquakes() {
+    const params = {
+      ...this.state
+    };
+    delete params.isModalOpen;
+
+    this.props.setEarthquakeSearchParams(params);
+    // TODO: make the earthquakes call
+    this.toggleModal();
   }
 
   handleFromDayChange(day) {
@@ -43,7 +68,12 @@ class ModalGetQuakes extends React.Component {
   }
 
   render() {
-    const { isModalOpen } = this.state;
+    const {
+      isModalOpen,
+      selectedFromDay,
+      selectedToDay,
+      quakesUnder25
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -55,24 +85,35 @@ class ModalGetQuakes extends React.Component {
               <FormGroup>
                 <Label>
                   Select start date <br />
-                  <DayPickerInput onDayChange={this.handleFromDayChange} />
+                  <DayPickerInput
+                    value={selectedFromDay}
+                    onDayChange={this.handleFromDayChange}
+                  />
                 </Label>
               </FormGroup>
               <FormGroup>
                 <Label>
                   Select end date <br />
-                  <DayPickerInput onDayChange={this.handleToDayChange} />
+                  <DayPickerInput
+                    value={selectedToDay}
+                    onDayChange={this.handleToDayChange}
+                  />
                 </Label>
               </FormGroup>
               <FormGroup check>
                 <Label check>
-                  <Input type="checkbox" /> Include earthquakes smaller than 2.5
+                  <Input
+                    type="checkbox"
+                    onChange={this.toggleUnder25Checkbox}
+                    defaultChecked={quakesUnder25}
+                  />{" "}
+                  Include earthquakes smaller than 2.5
                 </Label>
               </FormGroup>
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleModal}>
+            <Button color="primary" onClick={this.getMoreEarthquakes}>
               Get earthquakes
             </Button>{" "}
             <Button color="secondary" onClick={this.toggleModal}>

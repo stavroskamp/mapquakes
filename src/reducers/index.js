@@ -63,7 +63,6 @@ const zoomLevelOfMap = (state = MAP_ZOOM_LEVEL, action) => {
   }
 };
 
-// TODO: use it in the get earthquakes modal
 const searchEarthquakeParams = (state = {}, action) => {
   switch (action.type) {
     case SET_EARTHQUAKE_SEARCH_PARAMS:
