@@ -1,21 +1,52 @@
-import Color from "color";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { darken } from "polished";
 import { Button } from "reactstrap";
 
-// TODO: in the future pass color from props
-const mainColor = Color("#6c757d");
+const style = props => {
+  let color;
+  if (props.primary) {
+    color = "#457B9D";
+  } else if (props.cancel) {
+    color = "#F45B69";
+  } else {
+    color = "#6c757d";
+  }
+
+  return css`
+    &&& {
+      color: #ffff;
+      background-color: ${color};
+      border-color: ${color};
+      &:hover {
+        background-color: ${darken(0.1, color)};
+      }
+      &:focus {
+        box-shadow: none;
+      }
+      &:active {
+        background-color: ${darken(0.12, color)};
+        &:focus {
+          box-shadow: 0 0 0 0.2rem ${color};
+          border-color: ${darken(0.12, color)};
+        }
+      }
+    }
+  `;
+};
+
+export const menuButton = props => {
+  if (props.menubutton) {
+    return css`
+      align-self: center;
+      height: 42px;
+      padding: 0 16px;
+      margin: 0 8px;
+    `;
+  }
+};
 
 export const StyledButton = styled(Button)`
-  background-color: ${mainColor.hex()}!important;
-  border-color: ${mainColor.hex()}!important;
-  color: #ffff;
-  &:hover {
-    background-color: ${mainColor.darken(0.15).hex()}!important;
-  }
-  &:focus {
-    box-shadow: none !important;
-  }
-  &:active {
-    background-color: ${mainColor.darken(0.2).hex()}!important;
-  }
+  color: #fff;
+  ${style};
+  ${menuButton};
 `;

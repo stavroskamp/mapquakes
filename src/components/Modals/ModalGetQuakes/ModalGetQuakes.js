@@ -78,7 +78,9 @@ class ModalGetQuakes extends React.Component {
 
     return (
       <React.Fragment>
-        <Button onClick={this.toggleModal}>Get More Earthquakes</Button>
+        <Button onClick={this.toggleModal} primary="true" menubutton="true">
+          Get More Earthquakes
+        </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggle}>Title</ModalHeader>
           <ModalBody>
@@ -114,10 +116,10 @@ class ModalGetQuakes extends React.Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.getMoreEarthquakes}>
+            <Button primary="true" onClick={this.getMoreEarthquakes}>
               Get earthquakes
             </Button>{" "}
-            <Button color="secondary" onClick={this.toggleModal}>
+            <Button cancel="true" onClick={this.toggleModal}>
               Cancel
             </Button>
           </ModalFooter>

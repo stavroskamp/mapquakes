@@ -22,15 +22,17 @@ class ModalAboutInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Button onClick={this.toggleModal}>About</Button>
+        <Button onClick={this.toggleModal} primary="true" menubutton="true">
+          About
+        </Button>
         <StyledModal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggle}>Title</ModalHeader>
           <ModalBody>About</ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleModal}>
+            <Button primary="true" onClick={this.toggleModal}>
               Do Something
-            </Button>{" "}
-            <Button color="secondary" onClick={this.toggleModal}>
+            </Button>
+            <Button cancel="true" onClick={this.toggleModal}>
               Cancel
             </Button>
           </ModalFooter>
