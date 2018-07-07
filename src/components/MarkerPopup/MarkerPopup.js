@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, CardHeader, CardBody, CardText } from "reactstrap";
+import { Table } from "reactstrap";
 import { StyledMarkerPopup } from "./MarkerPopup.styles";
 
 const MarkerPopup = props => {
@@ -8,14 +8,22 @@ const MarkerPopup = props => {
   const { properties } = info;
   return (
     <StyledMarkerPopup>
-      <Card>
-        <CardHeader>{properties.title}</CardHeader>
-        <CardBody>
-          <CardText>Time: {properties.time}</CardText>
-          <CardText>Magnitude: {properties.mag}</CardText>
-          <CardText>Tsunami Warning: {properties.tsunami}</CardText>
-        </CardBody>
-      </Card>
+      <Table striped>
+        <tbody>
+          <tr>
+            <th scope="row">Time:</th>
+            <td>{properties.time}</td>
+          </tr>
+          <tr>
+            <th scope="row">Magnitude:</th>
+            <td>{properties.mag}</td>
+          </tr>
+          <tr>
+            <th scope="row">Tsunami Warning:</th>
+            <td>{properties.tsunami}</td>
+          </tr>
+        </tbody>
+      </Table>
     </StyledMarkerPopup>
   );
 };
