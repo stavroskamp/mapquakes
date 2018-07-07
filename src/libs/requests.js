@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL_BASE } from "../constants";
+import { API_URL_BASE, API_COUNTRIES_INFO_BASE } from "../constants";
 
 const constructUrl = params => {
   const baseParams = `${API_URL_BASE}query?format=geojson&limit=200&orderby=time`;
@@ -26,6 +26,18 @@ export const getAsyncEarthquakes = async params => {
   try {
     return await axios
       .get(callParams)
+      .then(res => res.data)
+      .catch(error => error.response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getAsyncCountriesInfo = async () => {
+  // https://restcountries.eu/rest/v2/all?fields=name;flag;latlng
+  try {
+    return await axios
+      .get(`${API_COUNTRIES_INFO_BASE}all?fields=name;flag;latlng`)
       .then(res => res.data)
       .catch(error => error.response);
   } catch (error) {

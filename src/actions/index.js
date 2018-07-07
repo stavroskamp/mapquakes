@@ -1,4 +1,4 @@
-import { getAsyncEarthquakes } from "../libs/requests";
+import { getAsyncEarthquakes, getAsyncCountriesInfo } from "../libs/requests";
 import { toast } from "react-toastify";
 
 export const SET_IS_FETCHING = "SET_IS_FETCHING";
@@ -11,6 +11,7 @@ export const SET_LIST_FILTERING_VALUE = "SET_LIST_FILTERING_VALUE";
 export const SET_CENTER_OF_MAP = "SET_CENTER_OF_MAP";
 export const SET_ZOOM_LEVEL_OF_MAP = "SET_ZOOM_LEVEL_OF_MAP";
 export const SET_EARTHQUAKE_SEARCH_PARAMS = "SET_EARTHQUAKE_SEARCH_PARAMS";
+export const SET_COUNTRIES_INFO = "SET_COUNTRIES_INFO";
 
 export const isFetchingEarthquakes = isFetching => {
   return dispatch => {
@@ -91,6 +92,14 @@ export const setEarthquakeSearchParamsAction = earthquakeSearchParams => {
     });
   };
 };
+export const setCountriesInfoAction = countriesInfo => {
+  return dispatch => {
+    dispatch({
+      type: SET_COUNTRIES_INFO,
+      countriesInfo
+    });
+  };
+};
 
 export const getEarthquakesAction = params => {
   return async dispatch => {
@@ -107,5 +116,13 @@ export const getEarthquakesAction = params => {
     }
 
     dispatch(isFetchingEarthquakes(false));
+  };
+};
+
+export const getCountriesInfoAction = () => {
+  return async dispatch => {
+    const countriesInfo = await getAsyncCountriesInfo();
+
+    dispatch(setCountriesInfoAction(countriesInfo));
   };
 };

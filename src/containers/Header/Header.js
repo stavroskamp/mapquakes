@@ -5,14 +5,20 @@ import { StyledHeader } from "./Header.styles";
 import { ModalGetQuakes, ModalAboutInfo } from "../../components";
 import {
   setEarthquakeSearchParamsAction,
-  getEarthquakesAction
+  getEarthquakesAction,
+  getCountriesInfoAction
 } from "../../actions";
 
 class Header extends React.Component {
   static propTypes = {
     setEarthquakeSearchParams: PropTypes.func,
-    getEarthquakes: PropTypes.func
+    getEarthquakes: PropTypes.func,
+    getCountriesInfo: PropTypes.func
   };
+
+  componentDidMount() {
+    this.props.getCountriesInfo();
+  }
 
   render() {
     return (
@@ -35,7 +41,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setEarthquakeSearchParams: params =>
       dispatch(setEarthquakeSearchParamsAction(params)),
-    getEarthquakes: params => dispatch(getEarthquakesAction(params))
+    getEarthquakes: params => dispatch(getEarthquakesAction(params)),
+    getCountriesInfo: () => dispatch(getCountriesInfoAction())
   };
 };
 
