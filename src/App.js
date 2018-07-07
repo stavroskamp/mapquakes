@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { hot } from "react-hot-loader";
 import { Toast } from "./components";
 import { Header, MapArea, Legend } from "./containers";
 import { StyledApp, BodyWrapper } from "./App.styles";
@@ -18,4 +19,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
