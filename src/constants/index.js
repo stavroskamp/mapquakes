@@ -1,5 +1,4 @@
 export const API_URL_BASE = "https://earthquake.usgs.gov/fdsnws/event/1/";
-export const API_COUNTRIES_INFO_BASE = "https://restcountries.eu/rest/v2/";
 
 // Earthquake list filter
 export const NEWEST_QUAKE_FILTER = "Newest";

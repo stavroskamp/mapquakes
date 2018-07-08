@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StyledModal } from "../Modals.styles";
-import { Button } from "../../../components";
+import { Button, CountrySelect } from "../../../components";
 import {
   ModalHeader,
   ModalBody,
@@ -17,7 +17,9 @@ import "react-day-picker/lib/style.css";
 class ModalGetQuakes extends React.Component {
   static propTypes = {
     setEarthquakeSearchParams: PropTypes.func,
-    getEarthquakes: PropTypes.func
+    getEarthquakes: PropTypes.func,
+    countries: PropTypes.array,
+    onCountrySelect: PropTypes.func
   };
 
   constructor(props) {
@@ -27,12 +29,14 @@ class ModalGetQuakes extends React.Component {
       isModalOpen: false,
       selectedFromDay: undefined,
       selectedToDay: undefined,
-      quakesUnder25: false
+      quakesUnder25: false,
+      selectedCountry: ""
     };
 
     this.toggleModal = this.toggleModal.bind(this);
     this.toggleUnder25Checkbox = this.toggleUnder25Checkbox.bind(this);
     this.getMoreEarthquakes = this.getMoreEarthquakes.bind(this);
+    this.handleCountrySelectChange = this.handleCountrySelectChange.bind(this);
     this.handleFromDayChange = this.handleFromDayChange.bind(this);
     this.handleToDayChange = this.handleToDayChange.bind(this);
   }
@@ -60,6 +64,10 @@ class ModalGetQuakes extends React.Component {
     this.toggleModal();
   }
 
+  handleCountrySelectChange(country) {
+    this.setState({ selectedCountry: country.name });
+  }
+
   handleFromDayChange(day) {
     this.setState({ selectedFromDay: day });
   }
@@ -71,10 +79,13 @@ class ModalGetQuakes extends React.Component {
   render() {
     const {
       isModalOpen,
+      selectedCountry,
       selectedFromDay,
       selectedToDay,
       quakesUnder25
     } = this.state;
+
+    const { countries } = this.props;
 
     return (
       <React.Fragment>
@@ -85,6 +96,16 @@ class ModalGetQuakes extends React.Component {
           <ModalHeader toggle={this.toggle}>Title</ModalHeader>
           <ModalBody>
             <Form>
+              <FormGroup>
+                <Label>
+                  Select a country <br />
+                  <CountrySelect
+                    countries={countries}
+                    selectedCountry={selectedCountry}
+                    onChange={this.handleCountrySelectChange}
+                  />
+                </Label>
+              </FormGroup>
               <FormGroup>
                 <Label>
                   Select start date <br />

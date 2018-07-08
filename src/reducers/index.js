@@ -13,8 +13,7 @@ import {
   SET_LIST_FILTERING_VALUE,
   SET_CENTER_OF_MAP,
   SET_ZOOM_LEVEL_OF_MAP,
-  SET_EARTHQUAKE_SEARCH_PARAMS,
-  SET_COUNTRIES_INFO
+  SET_EARTHQUAKE_SEARCH_PARAMS
 } from "../actions";
 
 const isFetchingEarthquakes = (state = false, action) => {
@@ -90,15 +89,6 @@ const quakesListFilters = (
   }
 };
 
-const countriesInfo = (state = {}, action) => {
-  switch (action.type) {
-    case SET_COUNTRIES_INFO:
-      return action.countriesInfo;
-    default:
-      return state;
-  }
-};
-
 const rootReducer = combineReducers({
   isFetchingEarthquakes,
   receivedEarthquakes,
@@ -106,8 +96,7 @@ const rootReducer = combineReducers({
   centerOfMap,
   zoomLevelOfMap,
   quakesListFilters,
-  searchEarthquakeParams,
-  countriesInfo
+  searchEarthquakeParams
 });
 
 export default rootReducer;

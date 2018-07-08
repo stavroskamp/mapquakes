@@ -15,3 +15,4 @@ export {
 } from "./Modals/ModalAboutInfo/ModalAboutInfo";
 export { default as Loading } from "./Loading/Loading";
 export { default as Toast } from "./Toast/Toast";
+export { default as CountrySelect } from "./CountrySelect/CountrySelect";
