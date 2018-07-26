@@ -14,6 +14,7 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
 import marker from "../../images/map-marker.png";
 import { Icon } from "leaflet";
+import { scrollIntoView } from "../../libs/helpers";
 
 // TODO: move it somewher else, maybe add colors
 const image = new Icon({
@@ -41,7 +42,7 @@ class MapArea extends React.Component {
     // Set the selected marker id
     this.props.setselectedEarthquakeId(earthquake.id);
     const selector = ".quake-list-" + earthquake.id;
-    document.querySelector(selector).scrollIntoView({ behavior: "instant" });
+    scrollIntoView(selector);
   };
 
   handleMapClick = () => {

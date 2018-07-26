@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { StyledListDropdownFilter } from "./ListDropdownFilter.styles";
 import { TiFilter } from "react-icons/lib/ti/";
+import { scrollItemToTop } from "../../libs/helpers";
 import {
   NEWEST_QUAKE_FILTER,
   OLDEST_QUAKE_FILTER,
@@ -22,6 +23,7 @@ const ListDropdownFilter = ({
     STRONGEST_QUAKE_FILTER,
     WEAKEST_QUAKE_FILTER
   ];
+  const selector = "#earthquakes-list-group";
   return (
     <StyledListDropdownFilter isOpen={isOpen} toggle={toggle}>
       <DropdownToggle caret>
@@ -33,6 +35,7 @@ const ListDropdownFilter = ({
             <DropdownItem
               onClick={() => {
                 setSelectedFilter(eachFilter);
+                scrollItemToTop(selector);
               }}
               key={index}
               active={eachFilter === dropdownLabel}

@@ -20,3 +20,13 @@ export const boundingBoxesFromCountryName = countryName => {
 export const dateToSearchFormat = time => {
   return moment(time).format("MM/DD/YYYY");
 };
+
+export const scrollIntoView = (selector, behavior = "instant") => {
+  document.querySelector(selector).scrollIntoView({ behavior: behavior });
+};
+
+export const scrollItemToTop = selector => {
+  document
+    .querySelector(selector)
+    .scroll({ top: 0, left: 0, behavior: "instant" });
+};

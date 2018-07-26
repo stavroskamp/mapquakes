@@ -27,7 +27,7 @@ const QuakesList = ({
   getEarthquakes
 }) => {
   return (
-    <StyledQuakesList>
+    <StyledQuakesList id="earthquakes-list-group">
       {earthquakes &&
       earthquakes.features &&
       earthquakes.features.length > 0 ? (
