@@ -8,8 +8,10 @@ const style = props => {
     color = "#457B9D";
   } else if (props.cancel) {
     color = "#F45B69";
-  } else {
+  } else if (props.gray) {
     color = "#6c757d";
+  } else {
+    return;
   }
 
   return css`

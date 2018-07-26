@@ -7,6 +7,7 @@ export const StyledQuakesList = styled.div`
   width: 100%;
   height: calc(100% - 38px - ${headerPadding});
   overflow-y: auto;
+  padding: 0 10px;
 
   .selected {
     background-color: #e0f3ff;

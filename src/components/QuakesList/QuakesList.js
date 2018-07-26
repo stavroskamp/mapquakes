@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import includes from "lodash/includes";
 import moment from "moment";
-import { ListCircle } from "../../components";
+import { ListCircle, Button } from "../../components";
 import {
   StyledQuakesList,
   StyledListGroup,
@@ -23,7 +23,8 @@ const QuakesList = ({
   earthquakes,
   filters,
   selectEarthquake,
-  selectedEarthquakeId
+  selectedEarthquakeId,
+  getEarthquakes
 }) => {
   return (
     <StyledQuakesList>
@@ -82,8 +83,10 @@ const QuakesList = ({
         </StyledListGroup>
       ) : (
         <StyledNoEarthquakes>
-          No Earthquakes
-          {/* TODO: add get latest earthquakes button */}
+          <p>No earthquakes for this search</p>
+          <Button primary={1} onClick={getEarthquakes}>
+            Get latest earthquakes
+          </Button>
         </StyledNoEarthquakes>
       )}
     </StyledQuakesList>
@@ -94,7 +97,8 @@ QuakesList.propTypes = {
   earthquakes: PropTypes.object,
   filters: PropTypes.object,
   selectEarthquake: PropTypes.func,
-  selectedEarthquakeId: PropTypes.string
+  selectedEarthquakeId: PropTypes.string,
+  getEarthquakes: PropTypes.func
 };
 
 export default QuakesList;

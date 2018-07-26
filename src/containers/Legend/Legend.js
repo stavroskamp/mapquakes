@@ -5,7 +5,8 @@ import {
   setListFilteringValueAction,
   setselectedEarthquakeIdAction,
   setCenterOfMapAction,
-  setZoomLevelOfMapAction
+  setZoomLevelOfMapAction,
+  getEarthquakesAction
 } from "../../actions";
 import { MAP_ZOOM_LEVEL_WHEN_SELECTED } from "../../constants";
 import { connect } from "react-redux";
@@ -25,7 +26,8 @@ class Legend extends React.Component {
     setListFilteringValue: PropTypes.func,
     setselectedEarthquakeId: PropTypes.func,
     selectedEarthquakeId: PropTypes.string,
-    isFetchingEarthquakes: PropTypes.bool
+    isFetchingEarthquakes: PropTypes.bool,
+    getEarthquakes: PropTypes.func
   };
 
   constructor(props) {
@@ -73,6 +75,7 @@ class Legend extends React.Component {
             filters={this.props.quakesListFilters}
             selectEarthquake={this.props.setselectedEarthquakeId}
             selectedEarthquakeId={this.props.selectedEarthquakeId}
+            getEarthquakes={this.props.getEarthquakes}
           />
         ) : (
           <Loading type={"spin"} color={"#ffff"} />
@@ -112,7 +115,8 @@ const mapDispatchToProps = dispatch => {
         ])
       );
       dispatch(setZoomLevelOfMapAction(MAP_ZOOM_LEVEL_WHEN_SELECTED));
-    }
+    },
+    getEarthquakes: () => dispatch(getEarthquakesAction())
   };
 };
 
