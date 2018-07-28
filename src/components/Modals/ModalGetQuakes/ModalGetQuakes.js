@@ -11,6 +11,8 @@ import {
   Label,
   Input
 } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
@@ -90,7 +92,7 @@ class ModalGetQuakes extends React.Component {
     return (
       <React.Fragment>
         <Button onClick={this.toggleModal} primary="true">
-          Get More Earthquakes
+          <FontAwesomeIcon icon={faSearch} /> Search Earthquakes
         </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggle}>Title</ModalHeader>
