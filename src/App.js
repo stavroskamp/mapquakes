@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
-import { Header, Toast } from "./components";
-import { MapArea, Legend } from "./containers";
+import { Toast } from "./components";
+import { Header, MapArea, Legend } from "./containers";
 import { StyledApp, BodyWrapper } from "./App.styles";
 
 class App extends Component {

@@ -24,6 +24,7 @@ export const style = props => {
   return css`
     &&& {
       color: ${fontColor};
+      font-weight: 600;
       background-color: ${color};
       border-color: ${color};
       &:hover {

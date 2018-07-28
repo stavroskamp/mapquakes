@@ -3,7 +3,7 @@ import { StyledModal } from "../Modals.styles";
 import { Button } from "../../../components";
 import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 class ModalAboutInfo extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class ModalAboutInfo extends React.Component {
     return (
       <React.Fragment>
         <Button onClick={this.toggleModal} yellow="true" menustyle="true">
-          <FontAwesomeIcon icon={faQuestionCircle} /> About
+          <FontAwesomeIcon icon={faQuestion} /> About
         </Button>
         <StyledModal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggle}>Title</ModalHeader>

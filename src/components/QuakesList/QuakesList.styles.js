@@ -5,7 +5,7 @@ const headerPadding = "20px";
 
 export const StyledQuakesList = styled.div`
   width: 100%;
-  height: calc(100% - 38px - 58px - ${headerPadding});
+  height: calc(100% - 38px - ${headerPadding});
   overflow-y: auto;
   padding: 0 10px;
 
