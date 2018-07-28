@@ -3,7 +3,7 @@ import { boundingBoxesFromCountryName, dateToSearchFormat } from "./helpers";
 import { API_URL_BASE } from "../constants";
 
 const constructUrl = params => {
-  const baseParams = `${API_URL_BASE}query?format=geojson&limit=200&orderby=time`;
+  const baseParams = `${API_URL_BASE}query?format=geojson&limit=300&orderby=time`;
   let callParams = baseParams;
 
   if (params && params.selectedCountry) {

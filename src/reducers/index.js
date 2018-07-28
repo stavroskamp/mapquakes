@@ -89,6 +89,8 @@ const quakesListFilters = (
   }
 };
 
+// TODO: add action to clear the advanced search filters and use it on the button in the quakes list
+
 const rootReducer = combineReducers({
   isFetchingEarthquakes,
   receivedEarthquakes,

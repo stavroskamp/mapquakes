@@ -35,7 +35,7 @@ class MapArea extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getEarthquakes();
+    this.props.getEarthquakes({ quakesUnder25: false });
   }
 
   onMarkerClick = earthquake => {
@@ -107,7 +107,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(setselectedEarthquakeIdAction(earthquake)),
     setselectedEarthquakeIdToNull: () =>
       dispatch(setselectedEarthquakeIdToNullAction()),
-    getEarthquakes: () => dispatch(getEarthquakesAction()),
+    getEarthquakes: params => dispatch(getEarthquakesAction(params)),
     setZoomLevelOfMap: zoomLevel => dispatch(setZoomLevelOfMapAction(zoomLevel))
   };
 };

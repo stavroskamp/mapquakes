@@ -84,7 +84,10 @@ const QuakesList = ({
       ) : (
         <StyledNoEarthquakes>
           <p>No earthquakes for this search</p>
-          <Button yellow={1} onClick={getEarthquakes}>
+          <Button
+            yellow={1}
+            onClick={() => getEarthquakes({ quakesUnder25: false })}
+          >
             Get the latest earthquakes
           </Button>
         </StyledNoEarthquakes>

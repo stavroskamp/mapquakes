@@ -76,7 +76,7 @@ class Legend extends React.Component {
             filters={this.props.quakesListFilters}
             selectEarthquake={this.props.setselectedEarthquakeId}
             selectedEarthquakeId={this.props.selectedEarthquakeId}
-            getEarthquakes={this.props.getEarthquakes}
+            getEarthquakes={params => this.props.getEarthquakes(params)}
           />
         ) : (
           <Loading type={"spin"} color={"#ffff"} />
@@ -117,7 +117,7 @@ const mapDispatchToProps = dispatch => {
       );
       dispatch(setZoomLevelOfMapAction(MAP_ZOOM_LEVEL_WHEN_SELECTED));
     },
-    getEarthquakes: () => dispatch(getEarthquakesAction())
+    getEarthquakes: params => dispatch(getEarthquakesAction(params))
   };
 };
 
