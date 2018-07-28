@@ -52,7 +52,7 @@ class Legend extends React.Component {
         <StyledSearchWrapper>
           <SearchInput
             id="quakes-search-input"
-            placeholder="Search..."
+            placeholder="Search on list..."
             value={this.props.quakesListFilters.searchListValue}
             onChange={e => {
               this.props.setsearchListValue(e.target.value);

@@ -1,9 +1,13 @@
 import React from "react";
-import { StyledModal } from "../Modals.styles";
+import {
+  StyledModal,
+  StyledModalHeader,
+  StyledModalCloseIcon
+} from "../Modals.styles";
 import { Button } from "../../../components";
-import { ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { ModalBody } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faQuestion, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class ModalAboutInfo extends React.Component {
   constructor(props) {
@@ -28,16 +32,11 @@ class ModalAboutInfo extends React.Component {
           <FontAwesomeIcon icon={faQuestion} /> About
         </Button>
         <StyledModal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggle}>Title</ModalHeader>
-          <ModalBody>About</ModalBody>
-          <ModalFooter>
-            <Button primary="true" onClick={this.toggleModal}>
-              Do Something
-            </Button>
-            <Button cancel="true" onClick={this.toggleModal}>
-              Cancel
-            </Button>
-          </ModalFooter>
+          <StyledModalHeader toggle={this.toggle}>
+            Info about the app
+            <StyledModalCloseIcon onClick={this.toggleModal} icon={faTimes} />
+          </StyledModalHeader>
+          <ModalBody>Info</ModalBody>
         </StyledModal>
       </React.Fragment>
     );

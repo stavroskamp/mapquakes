@@ -3,14 +3,17 @@ import { darken } from "polished";
 import { Button } from "reactstrap";
 
 export const style = props => {
+  let hoverPer = 0.1;
+  let activePer = 0.12;
+
   let color;
   let fontColor = "#ffff";
   if (props.primary) {
-    color = "#457B9D";
+    color = "#1496b4";
+    hoverPer = 0.05;
+    activePer = 0.07;
   } else if (props.cancel) {
-    color = "#F45B69";
-  } else if (props.gray) {
-    color = "#6c757d";
+    color = "#a4abb1";
   } else if (props.yellow) {
     color = "#ffe484";
     fontColor = "#304c98";
@@ -18,8 +21,8 @@ export const style = props => {
     return;
   }
 
-  const hoverColor = darken(0.1, color);
-  const activeColor = darken(0.12, color);
+  const hoverColor = darken(hoverPer, color);
+  const activeColor = darken(activePer, color);
 
   return css`
     &&& {

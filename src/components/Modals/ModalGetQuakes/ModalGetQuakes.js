@@ -1,18 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledModal } from "../Modals.styles";
-import { Button, CountrySelect } from "../../../components";
 import {
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Form,
-  FormGroup,
-  Label,
-  Input
-} from "reactstrap";
+  StyledModal,
+  StyledModalHeader,
+  StyledModalCloseIcon,
+  StyledModalFooter
+} from "../Modals.styles";
+import { Button, CountrySelect } from "../../../components";
+import { ModalBody, Form, FormGroup, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faGlobe, faTimes } from "@fortawesome/free-solid-svg-icons";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
@@ -95,7 +92,10 @@ class ModalGetQuakes extends React.Component {
           <FontAwesomeIcon icon={faSearch} /> Search Earthquakes
         </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggle}>Title</ModalHeader>
+          <StyledModalHeader toggle={this.toggle}>
+            <span>Search with specific parameters</span>
+            <StyledModalCloseIcon onClick={this.toggleModal} icon={faTimes} />
+          </StyledModalHeader>
           <ModalBody>
             <Form>
               <FormGroup>
@@ -138,14 +138,14 @@ class ModalGetQuakes extends React.Component {
               </FormGroup>
             </Form>
           </ModalBody>
-          <ModalFooter>
-            <Button primary="true" onClick={this.getMoreEarthquakes}>
-              Get earthquakes
+          <StyledModalFooter>
+            <Button yellow="true" onClick={this.getMoreEarthquakes}>
+              <FontAwesomeIcon icon={faGlobe} /> Get Earthquakes
             </Button>{" "}
             <Button cancel="true" onClick={this.toggleModal}>
               Cancel
             </Button>
-          </ModalFooter>
+          </StyledModalFooter>
         </StyledModal>
       </React.Fragment>
     );
