@@ -22,7 +22,7 @@ class ModalAboutInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Button onClick={this.toggleModal} primary="true" menubutton="true">
+        <Button onClick={this.toggleModal} yellow="true" menustyle="true">
           About
         </Button>
         <StyledModal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

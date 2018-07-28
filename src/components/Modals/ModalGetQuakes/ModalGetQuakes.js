@@ -89,7 +89,7 @@ class ModalGetQuakes extends React.Component {
 
     return (
       <React.Fragment>
-        <Button onClick={this.toggleModal} primary="true" menubutton="true">
+        <Button onClick={this.toggleModal} primary="true">
           Get More Earthquakes
         </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>

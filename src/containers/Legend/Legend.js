@@ -6,16 +6,19 @@ import {
   setselectedEarthquakeIdAction,
   setCenterOfMapAction,
   setZoomLevelOfMapAction,
-  getEarthquakesAction
+  getEarthquakesAction,
+  setEarthquakeSearchParamsAction
 } from "../../actions";
 import { MAP_ZOOM_LEVEL_WHEN_SELECTED } from "../../constants";
+import { countries } from "../../constants/countries";
 import { connect } from "react-redux";
 import { StyledLegend, StyledSearchWrapper } from "./Legend.styles";
 import {
   SearchInput,
   QuakesList,
   ListDropdownFilter,
-  Loading
+  Loading,
+  ModalGetQuakes
 } from "../../components";
 
 class Legend extends React.Component {
@@ -27,6 +30,7 @@ class Legend extends React.Component {
     setselectedEarthquakeId: PropTypes.func,
     selectedEarthquakeId: PropTypes.string,
     isFetchingEarthquakes: PropTypes.bool,
+    setEarthquakeSearchParams: PropTypes.func,
     getEarthquakes: PropTypes.func
   };
 
@@ -48,6 +52,14 @@ class Legend extends React.Component {
   render() {
     return (
       <StyledLegend>
+        <StyledSearchWrapper>
+          <ModalGetQuakes
+            setEarthquakeSearchParams={this.props.setEarthquakeSearchParams}
+            getEarthquakes={this.props.getEarthquakes}
+            countries={countries}
+          />
+        </StyledSearchWrapper>
+
         <StyledSearchWrapper>
           <SearchInput
             id="quakes-search-input"
@@ -116,6 +128,8 @@ const mapDispatchToProps = dispatch => {
       );
       dispatch(setZoomLevelOfMapAction(MAP_ZOOM_LEVEL_WHEN_SELECTED));
     },
+    setEarthquakeSearchParams: params =>
+      dispatch(setEarthquakeSearchParamsAction(params)),
     getEarthquakes: () => dispatch(getEarthquakesAction())
   };
 };

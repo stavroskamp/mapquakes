@@ -16,3 +16,4 @@ export {
 export { default as Loading } from "./Loading/Loading";
 export { default as Toast } from "./Toast/Toast";
 export { default as CountrySelect } from "./CountrySelect/CountrySelect";
+export { default as Header } from "./Header/Header";
