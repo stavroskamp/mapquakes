@@ -89,7 +89,7 @@ class ModalGetQuakes extends React.Component {
     return (
       <React.Fragment>
         <Button onClick={this.toggleModal} yellow="true" menustyle="true">
-          <FontAwesomeIcon icon={faSearch} /> Search Earthquakes
+          <FontAwesomeIcon icon={faSearch} /> Search earthquakes
         </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>
           <StyledModalHeader toggle={this.toggle}>
@@ -140,7 +140,7 @@ class ModalGetQuakes extends React.Component {
           </ModalBody>
           <StyledModalFooter>
             <Button yellow="true" onClick={this.getMoreEarthquakes}>
-              <FontAwesomeIcon icon={faGlobe} /> Get Earthquakes
+              <FontAwesomeIcon icon={faGlobe} /> Get earthquakes
             </Button>{" "}
             <Button cancel="true" onClick={this.toggleModal}>
               Cancel

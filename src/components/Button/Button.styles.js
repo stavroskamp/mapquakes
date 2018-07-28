@@ -3,16 +3,12 @@ import { darken } from "polished";
 import { Button } from "reactstrap";
 
 export const style = props => {
-  let hoverPer = 0.1;
-  let activePer = 0.12;
+  const hoverPer = 0.1;
+  const activePer = 0.12;
 
   let color;
   let fontColor = "#ffff";
-  if (props.primary) {
-    color = "#1496b4";
-    hoverPer = 0.05;
-    activePer = 0.07;
-  } else if (props.cancel) {
+  if (props.cancel) {
     color = "#a4abb1";
   } else if (props.yellow) {
     color = "#ffe484";

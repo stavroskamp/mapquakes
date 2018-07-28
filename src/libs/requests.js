@@ -24,7 +24,7 @@ const constructUrl = params => {
     callParams = `${callParams}&endtime=${endtime}`;
   }
   // include earthquakes under 2.5
-  if (params && params.quakesUnder25) {
+  if (params && !params.quakesUnder25) {
     callParams = `${callParams}&minmagnitude=2.5`;
   }
 

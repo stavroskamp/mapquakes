@@ -84,8 +84,8 @@ const QuakesList = ({
       ) : (
         <StyledNoEarthquakes>
           <p>No earthquakes for this search</p>
-          <Button primary={1} onClick={getEarthquakes}>
-            Get latest earthquakes
+          <Button yellow={1} onClick={getEarthquakes}>
+            Get the latest earthquakes
           </Button>
         </StyledNoEarthquakes>
       )}
