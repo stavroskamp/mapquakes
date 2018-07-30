@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { MIN_MAGNITUDE } from "../../../constants";
 import {
   StyledModal,
   StyledModalHeader,
@@ -28,7 +29,7 @@ class ModalGetQuakes extends React.Component {
       isModalOpen: false,
       selectedFromDay: undefined,
       selectedToDay: undefined,
-      quakesUnder25: false,
+      hasMinMagnitude: false,
       selectedCountry: ""
     };
 
@@ -48,7 +49,7 @@ class ModalGetQuakes extends React.Component {
 
   toggleUnder25Checkbox() {
     this.setState(prevState => ({
-      quakesUnder25: !prevState.quakesUnder25
+      hasMinMagnitude: !prevState.hasMinMagnitude
     }));
   }
 
@@ -81,7 +82,7 @@ class ModalGetQuakes extends React.Component {
       selectedCountry,
       selectedFromDay,
       selectedToDay,
-      quakesUnder25
+      hasMinMagnitude
     } = this.state;
 
     const { countries } = this.props;
@@ -131,9 +132,9 @@ class ModalGetQuakes extends React.Component {
                   <Input
                     type="checkbox"
                     onChange={this.toggleUnder25Checkbox}
-                    defaultChecked={quakesUnder25}
+                    defaultChecked={hasMinMagnitude}
                   />{" "}
-                  Include earthquakes smaller than 2.5
+                  Include earthquakes smaller than {MIN_MAGNITUDE}
                 </Label>
               </FormGroup>
             </Form>

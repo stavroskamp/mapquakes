@@ -1,6 +1,6 @@
 import axios from "axios";
 import { boundingBoxesFromCountryName, dateToSearchFormat } from "./helpers";
-import { API_URL_BASE } from "../constants";
+import { API_URL_BASE, MIN_MAGNITUDE } from "../constants";
 
 const constructUrl = params => {
   const baseParams = `${API_URL_BASE}query?format=geojson&limit=300&orderby=time`;
@@ -24,8 +24,8 @@ const constructUrl = params => {
     callParams = `${callParams}&endtime=${endtime}`;
   }
   // include earthquakes under 2.5
-  if (params && !params.quakesUnder25) {
-    callParams = `${callParams}&minmagnitude=2.5`;
+  if (params && !params.hasMinMagnitude) {
+    callParams = `${callParams}&minmagnitude=${MIN_MAGNITUDE}`;
   }
 
   return callParams;

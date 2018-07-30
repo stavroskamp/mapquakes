@@ -86,7 +86,7 @@ const QuakesList = ({
           <p>No earthquakes for this search</p>
           <Button
             yellow={1}
-            onClick={() => getEarthquakes({ quakesUnder25: false })}
+            onClick={() => getEarthquakes({ hasMinMagnitude: false })}
           >
             Get the latest earthquakes
           </Button>

@@ -35,7 +35,7 @@ class MapArea extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getEarthquakes({ quakesUnder25: false });
+    this.props.getEarthquakes({ hasMinMagnitude: false });
   }
 
   onMarkerClick = earthquake => {

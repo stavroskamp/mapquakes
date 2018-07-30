@@ -16,13 +16,13 @@ const ListCircle = props => {
     const theme = {
       color: ""
     };
-    if (mag > 0 && mag <= 2.5) {
+    if (mag > 0 && mag < 2.5) {
       theme.color = M2_5_QUAKE;
-    } else if (mag > 2.5 && mag <= 4.5) {
+    } else if (mag >= 2.5 && mag < 4.5) {
       theme.color = M4_5_QUAKE;
-    } else if (mag > 4.5 && mag <= 6.5) {
+    } else if (mag >= 4.5 && mag < 6.5) {
       theme.color = M6_5_QUAKE;
-    } else if (mag > 6.5) {
+    } else if (mag >= 6.5) {
       theme.color = M6_5_PLUS_QUAKE;
     } else {
       theme.color = M0_QUAKE;
