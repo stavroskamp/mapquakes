@@ -103,7 +103,13 @@ export const getEarthquakesAction = params => {
       toast.error("Error");
     } else {
       dispatch(receivedEarthquakesAction(earthquakes));
-      toast.success("Earthquakes loaded");
+
+      const nmbOfEarthquakes = () => {
+        return earthquakes && earthquakes.features
+          ? earthquakes.features.length
+          : "No";
+      };
+      toast.success(`${nmbOfEarthquakes()} earthquakes loaded`);
     }
 
     dispatch(isFetchingEarthquakes(false));
