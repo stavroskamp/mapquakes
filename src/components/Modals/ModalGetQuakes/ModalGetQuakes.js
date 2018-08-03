@@ -3,16 +3,18 @@ import PropTypes from "prop-types";
 import { MIN_MAGNITUDE } from "../../../constants";
 import {
   StyledModal,
+  StyledModalBody,
   StyledModalHeader,
   StyledModalCloseIcon,
   StyledModalFooter
 } from "../Modals.styles";
+import { StyledFormGroup } from "./ModalGetQuakes.styles";
 import { Button, CountrySelect } from "../../../components";
-import { ModalBody, Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faGlobe, faTimes } from "@fortawesome/free-solid-svg-icons";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
+
+import { faSearch, faGlobe, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class ModalGetQuakes extends React.Component {
   static propTypes = {
@@ -97,9 +99,9 @@ class ModalGetQuakes extends React.Component {
             <span>Search with specific parameters</span>
             <StyledModalCloseIcon onClick={this.toggleModal} icon={faTimes} />
           </StyledModalHeader>
-          <ModalBody>
+          <StyledModalBody>
             <Form>
-              <FormGroup>
+              <StyledFormGroup>
                 <Label>
                   Select a country <br />
                   <CountrySelect
@@ -108,8 +110,8 @@ class ModalGetQuakes extends React.Component {
                     onChange={this.handleCountrySelectChange}
                   />
                 </Label>
-              </FormGroup>
-              <FormGroup>
+              </StyledFormGroup>
+              <StyledFormGroup>
                 <Label>
                   Select start date <br />
                   <DayPickerInput
@@ -117,8 +119,8 @@ class ModalGetQuakes extends React.Component {
                     onDayChange={this.handleFromDayChange}
                   />
                 </Label>
-              </FormGroup>
-              <FormGroup>
+              </StyledFormGroup>
+              <StyledFormGroup>
                 <Label>
                   Select end date <br />
                   <DayPickerInput
@@ -126,8 +128,8 @@ class ModalGetQuakes extends React.Component {
                     onDayChange={this.handleToDayChange}
                   />
                 </Label>
-              </FormGroup>
-              <FormGroup check>
+              </StyledFormGroup>
+              <StyledFormGroup check shallow={1}>
                 <Label check>
                   <Input
                     type="checkbox"
@@ -136,9 +138,9 @@ class ModalGetQuakes extends React.Component {
                   />{" "}
                   Include earthquakes smaller than {MIN_MAGNITUDE}
                 </Label>
-              </FormGroup>
+              </StyledFormGroup>
             </Form>
-          </ModalBody>
+          </StyledModalBody>
           <StyledModalFooter>
             <Button yellow="true" onClick={this.getMoreEarthquakes}>
               <FontAwesomeIcon icon={faGlobe} /> Get earthquakes

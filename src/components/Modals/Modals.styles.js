@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Modal, ModalHeader, ModalFooter } from "reactstrap";
+import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const StyledModal = styled(Modal)`
@@ -13,6 +13,10 @@ export const StyledModal = styled(Modal)`
   .modal-content {
     border-radius: 0;
   }
+`;
+
+export const StyledModalBody = styled(ModalBody)`
+  padding: 20px 40px;
 `;
 
 export const StyledModalHeader = styled(ModalHeader)`

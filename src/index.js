@@ -7,6 +7,7 @@ import rootReducer from "./reducers";
 import "./index.css";
 import "leaflet/dist/leaflet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-day-picker/lib/style.css";
 import App from "./App";
 import "typeface-open-sans";
 import smoothscroll from "smoothscroll-polyfill";
