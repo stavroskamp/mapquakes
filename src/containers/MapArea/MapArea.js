@@ -12,16 +12,22 @@ import { Marker, Popup, TileLayer } from "react-leaflet";
 import "react-leaflet-markercluster/dist/styles.min.css";
 import MarkerClusterGroup from "react-leaflet-markercluster";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
-import marker from "../../images/map-marker.png";
+import blueMarker from "../../images/blue-marker-512.png";
+import yellowMarker from "../../images/yellow-marker-512.png";
 import { Icon } from "leaflet";
 import { scrollIntoView } from "../../libs/helpers";
 
-// TODO: move it somewher else, maybe add colors
-const image = new Icon({
-  iconUrl: marker,
-  shadowUrl: marker,
-  popupAnchor: [16, -2] // point from which the popup should open relative to the iconAnchor
-});
+const chooseMarker = type => {
+  const m = type === "blue" ? blueMarker : yellowMarker;
+
+  return new Icon({
+    iconUrl: m,
+    iconSize: [32, 32],
+    shadowSize: [32, 32],
+    shadowUrl: m,
+    popupAnchor: [0, -19] // point from which the popup should open relative to the iconAnchor
+  });
+};
 
 class MapArea extends React.Component {
   static propTypes = {
@@ -31,7 +37,8 @@ class MapArea extends React.Component {
     getEarthquakes: PropTypes.func,
     centerOfMap: PropTypes.array,
     zoomLevelOfMap: PropTypes.number,
-    setZoomLevelOfMap: PropTypes.func
+    setZoomLevelOfMap: PropTypes.func,
+    selectedEarthquakeId: PropTypes.string
   };
 
   componentDidMount() {
@@ -76,7 +83,11 @@ class MapArea extends React.Component {
                     <Marker
                       key={earthquake.id}
                       position={xy}
-                      icon={image}
+                      icon={
+                        earthquake.id === this.props.selectedEarthquakeId
+                          ? chooseMarker("yellow")
+                          : chooseMarker("blue")
+                      }
                       onClick={() => {
                         this.onMarkerClick(earthquake);
                       }}
@@ -96,9 +107,19 @@ class MapArea extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { receivedEarthquakes, centerOfMap, zoomLevelOfMap } = state;
+  const {
+    receivedEarthquakes,
+    centerOfMap,
+    zoomLevelOfMap,
+    selectedEarthquakeId
+  } = state;
 
-  return { receivedEarthquakes, centerOfMap, zoomLevelOfMap };
+  return {
+    receivedEarthquakes,
+    centerOfMap,
+    zoomLevelOfMap,
+    selectedEarthquakeId
+  };
 };
 
 const mapDispatchToProps = dispatch => {
