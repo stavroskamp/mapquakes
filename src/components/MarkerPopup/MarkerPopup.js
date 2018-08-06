@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { Table } from "reactstrap";
-import { StyledMarkerPopup } from "./MarkerPopup.styles";
+import { StyledMarkerPopup, StyledMoreInfoWrapper } from "./MarkerPopup.styles";
 
 const MarkerPopup = props => {
   const { info } = props;
@@ -39,13 +39,15 @@ const MarkerPopup = props => {
           </tr>
           <tr>
             <th scope="row">Tsunami Warning:</th>
-            <td>{properties.tsunami}</td>
+            <td>{properties.tsunami === 1 ? "Yes" : "No"}</td>
           </tr>
         </tbody>
       </Table>
-      <a target="_blank" rel="noopener noreferrer" href={properties.url}>
-        More info here
-      </a>
+      <StyledMoreInfoWrapper>
+        <a target="_blank" rel="noopener noreferrer" href={properties.url}>
+          More info here
+        </a>
+      </StyledMoreInfoWrapper>
     </StyledMarkerPopup>
   );
 };

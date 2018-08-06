@@ -5,6 +5,7 @@ export const StyledCircleWrapper = styled.div`
   color: white;
   height: 31px;
   width: 31px;
+  min-width: 31px;
   background-color: ${props => props.theme.color};
   border-radius: 50%;
   display: inline-flex;
