@@ -1,5 +1,5 @@
 import React from "react";
-import moment from "moment";
+import dayjs from "dayjs";
 import PropTypes from "prop-types";
 import { Table } from "reactstrap";
 import { StyledMarkerPopup, StyledMoreInfoWrapper } from "./MarkerPopup.styles";
@@ -15,7 +15,7 @@ const MarkerPopup = props => {
           <tr>
             <th scope="row">Time:</th>
             <td>
-              {moment(properties.time).format("MMMM Do YYYY, h:mm:ss a")}
+              {dayjs(properties.time).format("MMMM DD YYYY, h:mm:ss a")}
               {" (UTC)"}
             </td>
           </tr>

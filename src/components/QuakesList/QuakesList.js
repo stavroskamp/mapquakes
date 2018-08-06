@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import includes from "lodash/includes";
-import moment from "moment";
+import dayjs from "dayjs";
+
 import { ListCircle, Button } from "../../components";
 import {
   StyledQuakesList,
@@ -71,8 +72,8 @@ const QuakesList = ({
                       {earthquake.properties.place}
                     </StyledQuakeListPlace>
                     <StyledQuakeListTime className="quake-list-earthquake-time">
-                      {moment(earthquake.properties.time).format(
-                        "MMMM Do YYYY, h:mm:ss a"
+                      {dayjs(earthquake.properties.time).format(
+                        "MMMM DD YYYY, h:mm:ss a"
                       )}
                       {" (UTC)"}
                     </StyledQuakeListTime>

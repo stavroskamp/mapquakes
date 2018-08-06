@@ -1,5 +1,5 @@
 import { countries } from "../constants/countries";
-import moment from "moment";
+import dayjs from "dayjs";
 
 export const boundingBoxesFromCountryName = countryName => {
   let bbox;
@@ -18,7 +18,7 @@ export const boundingBoxesFromCountryName = countryName => {
 };
 
 export const dateToSearchFormat = time => {
-  return moment(time).format("MM/DD/YYYY");
+  return dayjs(time).format("MM/DD/YYYY");
 };
 
 export const scrollIntoView = (selector, behavior = "instant") => {
