@@ -16,14 +16,13 @@ class ModalAboutInfo extends React.Component {
     this.state = {
       isModalOpen: false
     };
-    this.toggleModal = this.toggleModal.bind(this);
   }
 
-  toggleModal() {
+  toggleModal = () => {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen
     }));
-  }
+  };
 
   render() {
     return (

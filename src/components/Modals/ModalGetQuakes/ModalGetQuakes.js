@@ -34,28 +34,21 @@ class ModalGetQuakes extends React.Component {
       hasMinMagnitude: false,
       selectedCountry: ""
     };
-
-    this.toggleModal = this.toggleModal.bind(this);
-    this.toggleUnder25Checkbox = this.toggleUnder25Checkbox.bind(this);
-    this.getMoreEarthquakes = this.getMoreEarthquakes.bind(this);
-    this.handleCountrySelectChange = this.handleCountrySelectChange.bind(this);
-    this.handleFromDayChange = this.handleFromDayChange.bind(this);
-    this.handleToDayChange = this.handleToDayChange.bind(this);
   }
 
-  toggleModal() {
+  toggleModal = () => {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen
     }));
-  }
+  };
 
-  toggleUnder25Checkbox() {
+  toggleUnder25Checkbox = () => {
     this.setState(prevState => ({
       hasMinMagnitude: !prevState.hasMinMagnitude
     }));
-  }
+  };
 
-  getMoreEarthquakes() {
+  getMoreEarthquakes = () => {
     const params = {
       ...this.state
     };
@@ -64,19 +57,19 @@ class ModalGetQuakes extends React.Component {
     this.props.setEarthquakeSearchParams(params);
     this.props.getEarthquakes(params);
     this.toggleModal();
-  }
+  };
 
-  handleCountrySelectChange(country) {
+  handleCountrySelectChange = country => {
     this.setState({ selectedCountry: country.name });
-  }
+  };
 
-  handleFromDayChange(day) {
+  handleFromDayChange = day => {
     this.setState({ selectedFromDay: day });
-  }
+  };
 
-  handleToDayChange(day) {
+  handleToDayChange = day => {
     this.setState({ selectedToDay: day });
-  }
+  };
 
   render() {
     const {

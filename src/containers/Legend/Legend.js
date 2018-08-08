@@ -37,14 +37,13 @@ class Legend extends React.Component {
     this.state = {
       listDropdownFilterIsOpen: false
     };
-    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  toggleDropdown() {
+  toggleDropdown = () => {
     this.setState(prevState => ({
       listDropdownFilterIsOpen: !prevState.listDropdownFilterIsOpen
     }));
-  }
+  };
 
   render() {
     return (
