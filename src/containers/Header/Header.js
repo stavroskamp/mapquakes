@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import connect from "react-redux/lib/connect/connect";
-import { StyledHeader } from "./Header.styles";
+import { StyledHeader, Logo, ButtonsWrapper } from "./Header.styles";
 import { ModalGetQuakes, ModalAboutInfo } from "../../components";
 import {
   setEarthquakeSearchParamsAction,
   getEarthquakesAction
 } from "../../actions";
+import logo from "../../images/logo.png";
 import { countries } from "../../constants/countries";
 
 class Header extends React.Component {
@@ -18,12 +19,15 @@ class Header extends React.Component {
   render() {
     return (
       <StyledHeader>
-        <ModalGetQuakes
-          setEarthquakeSearchParams={this.props.setEarthquakeSearchParams}
-          getEarthquakes={this.props.getEarthquakes}
-          countries={countries}
-        />
-        <ModalAboutInfo />
+        <Logo alt="logo" src={logo} />
+        <ButtonsWrapper>
+          <ModalGetQuakes
+            setEarthquakeSearchParams={this.props.setEarthquakeSearchParams}
+            getEarthquakes={this.props.getEarthquakes}
+            countries={countries}
+          />
+          <ModalAboutInfo />
+        </ButtonsWrapper>
       </StyledHeader>
     );
   }
