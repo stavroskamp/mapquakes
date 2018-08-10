@@ -32,10 +32,13 @@ class ModalAboutInfo extends React.Component {
         </Button>
         <StyledModal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <StyledModalHeader toggle={this.toggle}>
-            Info about the app
+            About
             <StyledModalCloseIcon onClick={this.toggleModal} icon={faTimes} />
           </StyledModalHeader>
-          <ModalBody>Info</ModalBody>
+          <ModalBody>
+            {"The application is not responsible for country names, borders, "}
+            {"This website is not affiliated in"}
+          </ModalBody>
         </StyledModal>
       </React.Fragment>
     );
