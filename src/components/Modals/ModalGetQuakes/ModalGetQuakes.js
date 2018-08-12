@@ -21,7 +21,8 @@ class ModalGetQuakes extends React.Component {
     setEarthquakeSearchParams: PropTypes.func,
     getEarthquakes: PropTypes.func,
     countries: PropTypes.array,
-    onCountrySelect: PropTypes.func
+    onCountrySelect: PropTypes.func,
+    isMobile: PropTypes.bool
   };
 
   constructor(props) {
@@ -85,7 +86,8 @@ class ModalGetQuakes extends React.Component {
     return (
       <React.Fragment>
         <Button onClick={this.toggleModal} yellow="true" menustyle="true">
-          <FontAwesomeIcon icon={faSearch} /> Search earthquakes
+          <FontAwesomeIcon icon={faSearch} />
+          {!this.props.isMobile ? <span> Search earthquakes</span> : null}
         </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>
           <StyledModalHeader toggle={this.toggle}>

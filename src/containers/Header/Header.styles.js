@@ -13,6 +13,18 @@ export const Logo = styled.img`
   height: 38px;
 `;
 
+export const LogoText = styled.div`
+  font-size: 17px;
+  font-weight: 400;
+  color: #ffe484;
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const ButtonsWrapper = styled.div`
+  text-align: right;
   padding: 0 10px;
 `;

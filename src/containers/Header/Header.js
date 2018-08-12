@@ -1,7 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import connect from "react-redux/lib/connect/connect";
-import { StyledHeader, Logo, ButtonsWrapper } from "./Header.styles";
+import {
+  StyledHeader,
+  LogoWrapper,
+  Logo,
+  LogoText,
+  ButtonsWrapper
+} from "./Header.styles";
 import { ModalGetQuakes, ModalAboutInfo } from "../../components";
 import {
   setEarthquakeSearchParamsAction,
@@ -9,24 +15,33 @@ import {
 } from "../../actions";
 import logo from "../../images/logo.png";
 import { countries } from "../../constants/countries";
+import withSizes from "react-sizes";
 
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width < 540
+});
 class Header extends React.Component {
   static propTypes = {
     setEarthquakeSearchParams: PropTypes.func,
-    getEarthquakes: PropTypes.func
+    getEarthquakes: PropTypes.func,
+    isMobile: PropTypes.bool
   };
 
   render() {
     return (
       <StyledHeader>
-        <Logo alt="logo" src={logo} />
+        <LogoWrapper>
+          <Logo alt="logo" src={logo} />
+          {!this.props.isMobile ? <LogoText>MapQuakes</LogoText> : null}
+        </LogoWrapper>
         <ButtonsWrapper>
           <ModalGetQuakes
             setEarthquakeSearchParams={this.props.setEarthquakeSearchParams}
             getEarthquakes={this.props.getEarthquakes}
             countries={countries}
+            isMobile={this.props.isMobile}
           />
-          <ModalAboutInfo />
+          <ModalAboutInfo isMobile={this.props.isMobile} />
         </ButtonsWrapper>
       </StyledHeader>
     );
@@ -48,4 +63,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(withSizes(mapSizesToProps)(Header));

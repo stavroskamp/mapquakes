@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   StyledModal,
   StyledModalHeader,
@@ -10,6 +11,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class ModalAboutInfo extends React.Component {
+  static propTypes = {
+    isMobile: PropTypes.bool
+  };
+
   constructor(props) {
     super(props);
 
@@ -28,7 +33,8 @@ class ModalAboutInfo extends React.Component {
     return (
       <React.Fragment>
         <Button onClick={this.toggleModal} yellow="true" menustyle="true">
-          <FontAwesomeIcon icon={faQuestion} /> About
+          <FontAwesomeIcon icon={faQuestion} />
+          {!this.props.isMobile ? <span> About</span> : null}
         </Button>
         <StyledModal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <StyledModalHeader toggle={this.toggle}>
