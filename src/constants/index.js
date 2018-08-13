@@ -18,3 +18,5 @@ export const MAP_CENTER_POSITION = [26.5, 11.9];
 export const MAP_ZOOM_LEVEL = 3;
 export const MAP_ZOOM_LEVEL_WHEN_SELECTED = 15;
 export const MIN_MAGNITUDE = 4;
+
+export const MOBILE_WIDTH_MAIN = 500;

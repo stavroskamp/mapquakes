@@ -2,10 +2,13 @@ import styled from "styled-components";
 import { ListGroupItem, ListGroup } from "reactstrap";
 
 const headerPadding = "20px";
+const isMobile = props => {
+  return props.ismobile ? "40px" : 0;
+};
 
 export const StyledQuakesList = styled.div`
   width: 100%;
-  height: calc(100% - 38px - ${headerPadding});
+  height: calc(100% - 38px - ${headerPadding} - ${isMobile});
   overflow-y: auto;
   padding: 0 10px;
 

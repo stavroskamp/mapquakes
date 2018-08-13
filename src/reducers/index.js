@@ -13,7 +13,9 @@ import {
   SET_LIST_FILTERING_VALUE,
   SET_CENTER_OF_MAP,
   SET_ZOOM_LEVEL_OF_MAP,
-  SET_EARTHQUAKE_SEARCH_PARAMS
+  SET_EARTHQUAKE_SEARCH_PARAMS,
+  TOGGLE_LEGEND_OPEN,
+  CLOSE_LEGEND
 } from "../actions";
 
 const isFetchingEarthquakes = (state = false, action) => {
@@ -89,6 +91,17 @@ const quakesListFilters = (
   }
 };
 
+const isLegendMobileOpen = (state = false, action) => {
+  switch (action.type) {
+    case TOGGLE_LEGEND_OPEN:
+      return !state.isToggleMobileOpen;
+    case CLOSE_LEGEND:
+      return false;
+    default:
+      return state;
+  }
+};
+
 // TODO: add action to clear the advanced search filters and use it on the button in the quakes list
 
 const rootReducer = combineReducers({
@@ -98,7 +111,8 @@ const rootReducer = combineReducers({
   centerOfMap,
   zoomLevelOfMap,
   quakesListFilters,
-  searchEarthquakeParams
+  searchEarthquakeParams,
+  isLegendMobileOpen
 });
 
 export default rootReducer;

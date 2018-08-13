@@ -56,8 +56,19 @@ export const menuStyle = props => {
   }
 };
 
+export const openLegendButton = props => {
+  if (props.openlegendbutton) {
+    return css`
+      position: absolute;
+      z-index: 2;
+      margin: 10px;
+    `;
+  }
+};
+
 export const StyledButton = styled(Button)`
   color: #fff;
   ${style};
   ${menuStyle};
+  ${openLegendButton};
 `;

@@ -5,9 +5,11 @@ import {
   setselectedEarthquakeIdAction,
   setselectedEarthquakeIdToNullAction,
   getEarthquakesAction,
-  setZoomLevelOfMapAction
+  setZoomLevelOfMapAction,
+  toggleLegendOpenAction
 } from "../../actions";
-import { MarkerPopup } from "../../components";
+import { MarkerPopup, Button } from "../../components";
+import { MOBILE_WIDTH_MAIN } from "../../constants";
 import { Marker, Popup, TileLayer } from "react-leaflet";
 import "react-leaflet-markercluster/dist/styles.min.css";
 import MarkerClusterGroup from "react-leaflet-markercluster";
@@ -16,6 +18,13 @@ import blueMarker from "../../images/blue-marker-512.png";
 import yellowMarker from "../../images/yellow-marker-512.png";
 import { Icon } from "leaflet";
 import { scrollIntoView } from "../../libs/helpers";
+import withSizes from "react-sizes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width < MOBILE_WIDTH_MAIN
+});
 
 const chooseMarker = type => {
   const m = type === "blue" ? blueMarker : yellowMarker;
@@ -38,7 +47,9 @@ class MapArea extends React.Component {
     centerOfMap: PropTypes.array,
     zoomLevelOfMap: PropTypes.number,
     setZoomLevelOfMap: PropTypes.func,
-    selectedEarthquakeId: PropTypes.string
+    selectedEarthquakeId: PropTypes.string,
+    isMobile: PropTypes.bool,
+    toggleLegendOpen: PropTypes.func
   };
 
   componentDidMount() {
@@ -57,11 +68,25 @@ class MapArea extends React.Component {
     this.props.setselectedEarthquakeIdToNull();
   };
 
+  handleToggleLegendOpen = () => {
+    this.props.toggleLegendOpen();
+  };
+
   render() {
     const earthquakes = this.props.receivedEarthquakes;
 
     return (
-      <StyledMapWrapper>
+      <StyledMapWrapper isMobile={this.props.isMobile}>
+        {this.props.isMobile ? (
+          <Button
+            onClick={this.handleToggleLegendOpen}
+            yellow="true"
+            openlegendbutton="true"
+            menustyle="true"
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </Button>
+        ) : null}
         <StyledMap
           onClick={this.handleMapClick}
           center={this.props.centerOfMap}
@@ -134,11 +159,13 @@ const mapDispatchToProps = dispatch => {
     setselectedEarthquakeIdToNull: () =>
       dispatch(setselectedEarthquakeIdToNullAction()),
     getEarthquakes: params => dispatch(getEarthquakesAction(params)),
-    setZoomLevelOfMap: zoomLevel => dispatch(setZoomLevelOfMapAction(zoomLevel))
+    setZoomLevelOfMap: zoomLevel =>
+      dispatch(setZoomLevelOfMapAction(zoomLevel)),
+    toggleLegendOpen: () => dispatch(toggleLegendOpenAction())
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MapArea);
+)(withSizes(mapSizesToProps)(MapArea));

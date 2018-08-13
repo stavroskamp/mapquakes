@@ -25,10 +25,12 @@ const QuakesList = ({
   filters,
   selectEarthquake,
   selectedEarthquakeId,
-  getEarthquakes
+  getEarthquakes,
+  isMobile,
+  closeLegendAction
 }) => {
   return (
-    <StyledQuakesList id="earthquakes-list-group">
+    <StyledQuakesList ismobile={isMobile} id="earthquakes-list-group">
       {earthquakes &&
       earthquakes.features &&
       earthquakes.features.length > 0 ? (
@@ -60,7 +62,10 @@ const QuakesList = ({
             .map(earthquake => {
               return (
                 <StyledListGroupItem
-                  onClick={() => selectEarthquake(earthquake)}
+                  onClick={() => {
+                    selectEarthquake(earthquake);
+                    closeLegendAction();
+                  }}
                   key={earthquake.id}
                   className={`quake-list-${earthquake.id} ${
                     selectedEarthquakeId === earthquake.id ? "selected" : ""
@@ -102,7 +107,9 @@ QuakesList.propTypes = {
   filters: PropTypes.object,
   selectEarthquake: PropTypes.func,
   selectedEarthquakeId: PropTypes.string,
-  getEarthquakes: PropTypes.func
+  getEarthquakes: PropTypes.func,
+  isMobile: PropTypes.bool,
+  closeLegendAction: PropTypes.func
 };
 
 export default QuakesList;

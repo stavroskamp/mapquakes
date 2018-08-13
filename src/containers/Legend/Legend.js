@@ -6,17 +6,32 @@ import {
   setselectedEarthquakeIdAction,
   setCenterOfMapAction,
   setZoomLevelOfMapAction,
-  getEarthquakesAction
+  getEarthquakesAction,
+  closeLegendAction
 } from "../../actions";
-import { MAP_ZOOM_LEVEL_WHEN_SELECTED } from "../../constants";
+import {
+  MAP_ZOOM_LEVEL_WHEN_SELECTED,
+  MOBILE_WIDTH_MAIN
+} from "../../constants";
 import { connect } from "react-redux";
-import { StyledLegend, StyledSearchWrapper } from "./Legend.styles";
+import {
+  StyledLegend,
+  StyledSearchWrapper,
+  StyledCloseLegend,
+  StyledFontAwesomeIcon
+} from "./Legend.styles";
 import {
   SearchInput,
   QuakesList,
   ListDropdownFilter,
   Loading
 } from "../../components";
+import withSizes from "react-sizes";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width < MOBILE_WIDTH_MAIN
+});
 
 class Legend extends React.Component {
   static propTypes = {
@@ -28,7 +43,10 @@ class Legend extends React.Component {
     selectedEarthquakeId: PropTypes.string,
     isFetchingEarthquakes: PropTypes.bool,
     setEarthquakeSearchParams: PropTypes.func,
-    getEarthquakes: PropTypes.func
+    getEarthquakes: PropTypes.func,
+    isMobile: PropTypes.bool,
+    isLegendMobileOpen: PropTypes.bool,
+    closeLegend: PropTypes.func
   };
 
   constructor(props) {
@@ -45,9 +63,24 @@ class Legend extends React.Component {
     }));
   };
 
+  handleCloseIconClick = () => {
+    this.props.closeLegend();
+  };
+
   render() {
     return (
-      <StyledLegend>
+      <StyledLegend
+        ismobile={this.props.isMobile}
+        islegendmobileopen={this.props.isLegendMobileOpen}
+      >
+        {this.props.isMobile ? (
+          <StyledCloseLegend>
+            <StyledFontAwesomeIcon
+              onClick={this.handleCloseIconClick}
+              icon={faTimes}
+            />
+          </StyledCloseLegend>
+        ) : null}
         <StyledSearchWrapper>
           <SearchInput
             id="quakes-search-input"
@@ -71,11 +104,13 @@ class Legend extends React.Component {
         </StyledSearchWrapper>
         {this.props.receivedEarthquakes && !this.props.isFetchingEarthquakes ? (
           <QuakesList
+            isMobile={this.props.isMobile}
             earthquakes={this.props.receivedEarthquakes}
             filters={this.props.quakesListFilters}
             selectEarthquake={this.props.setselectedEarthquakeId}
             selectedEarthquakeId={this.props.selectedEarthquakeId}
             getEarthquakes={params => this.props.getEarthquakes(params)}
+            closeLegendAction={this.props.closeLegend}
           />
         ) : (
           <Loading type={"spin"} color={"#ffff"} />
@@ -90,14 +125,16 @@ const mapStateToProps = state => {
     receivedEarthquakes,
     quakesListFilters,
     selectedEarthquakeId,
-    isFetchingEarthquakes
+    isFetchingEarthquakes,
+    isLegendMobileOpen
   } = state;
 
   return {
     receivedEarthquakes,
     quakesListFilters,
     selectedEarthquakeId,
-    isFetchingEarthquakes
+    isFetchingEarthquakes,
+    isLegendMobileOpen
   };
 };
 
@@ -116,11 +153,12 @@ const mapDispatchToProps = dispatch => {
       );
       dispatch(setZoomLevelOfMapAction(MAP_ZOOM_LEVEL_WHEN_SELECTED));
     },
-    getEarthquakes: params => dispatch(getEarthquakesAction(params))
+    getEarthquakes: params => dispatch(getEarthquakesAction(params)),
+    closeLegend: () => dispatch(closeLegendAction())
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Legend);
+)(withSizes(mapSizesToProps)(Legend));

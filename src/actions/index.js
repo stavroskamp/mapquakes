@@ -11,6 +11,8 @@ export const SET_LIST_FILTERING_VALUE = "SET_LIST_FILTERING_VALUE";
 export const SET_CENTER_OF_MAP = "SET_CENTER_OF_MAP";
 export const SET_ZOOM_LEVEL_OF_MAP = "SET_ZOOM_LEVEL_OF_MAP";
 export const SET_EARTHQUAKE_SEARCH_PARAMS = "SET_EARTHQUAKE_SEARCH_PARAMS";
+export const TOGGLE_LEGEND_OPEN = "TOGGLE_LEGEND_OPEN";
+export const CLOSE_LEGEND = "CLOSE_LEGEND";
 
 export const isFetchingEarthquakes = isFetching => {
   return dispatch => {
@@ -88,6 +90,22 @@ export const setEarthquakeSearchParamsAction = earthquakeSearchParams => {
     dispatch({
       type: SET_EARTHQUAKE_SEARCH_PARAMS,
       earthquakeSearchParams
+    });
+  };
+};
+
+export const toggleLegendOpenAction = () => {
+  return dispatch => {
+    dispatch({
+      type: TOGGLE_LEGEND_OPEN
+    });
+  };
+};
+
+export const closeLegendAction = () => {
+  return dispatch => {
+    dispatch({
+      type: CLOSE_LEGEND
     });
   };
 };
