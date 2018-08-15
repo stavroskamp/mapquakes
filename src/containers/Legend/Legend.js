@@ -153,7 +153,7 @@ const mapDispatchToProps = dispatch => {
       );
       dispatch(setZoomLevelOfMapAction(MAP_ZOOM_LEVEL_WHEN_SELECTED));
     },
-    getEarthquakes: params => dispatch(getEarthquakesAction(params)),
+    getEarthquakes: params => dispatch(getEarthquakesAction(params, true)),
     closeLegend: () => dispatch(closeLegendAction())
   };
 };

@@ -49,11 +49,12 @@ class MapArea extends React.Component {
     setZoomLevelOfMap: PropTypes.func,
     selectedEarthquakeId: PropTypes.string,
     isMobile: PropTypes.bool,
-    toggleLegendOpen: PropTypes.func
+    toggleLegendOpen: PropTypes.func,
+    boundsOfMap: PropTypes.array
   };
 
   componentDidMount() {
-    this.props.getEarthquakes({ hasMinMagnitude: false });
+    this.props.getEarthquakes({ hasMinMagnitude: false }, false);
   }
 
   onMarkerClick = earthquake => {
@@ -91,7 +92,10 @@ class MapArea extends React.Component {
           onClick={this.handleMapClick}
           center={this.props.centerOfMap}
           zoom={this.props.zoomLevelOfMap}
-          onZoomend={e => this.props.setZoomLevelOfMap(e.target._zoom)}
+          bounds={this.props.boundsOfMap}
+          onResize={e => {
+            this.props.setZoomLevelOfMap(e.target._zoom);
+          }}
         >
           {/* does this works correctly at production? */}
           {process.env.NODE_ENV === "development" ? (
@@ -141,14 +145,16 @@ const mapStateToProps = state => {
     receivedEarthquakes,
     centerOfMap,
     zoomLevelOfMap,
-    selectedEarthquakeId
+    selectedEarthquakeId,
+    boundsOfMap
   } = state;
 
   return {
     receivedEarthquakes,
     centerOfMap,
     zoomLevelOfMap,
-    selectedEarthquakeId
+    selectedEarthquakeId,
+    boundsOfMap
   };
 };
 

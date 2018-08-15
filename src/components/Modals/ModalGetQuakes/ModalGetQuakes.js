@@ -98,7 +98,7 @@ class ModalGetQuakes extends React.Component {
             <Form>
               <StyledFormGroup>
                 <Label>
-                  Select a country <br />
+                  Select country area <br />
                   <CountrySelect
                     countries={countries}
                     selectedCountry={selectedCountry}

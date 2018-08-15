@@ -3,7 +3,7 @@ import { ListGroupItem, ListGroup } from "reactstrap";
 
 const headerPadding = "20px";
 const isMobile = props => {
-  return props.ismobile ? "40px" : 0;
+  return props.ismobile ? "40px" : "0px";
 };
 
 export const StyledQuakesList = styled.div`

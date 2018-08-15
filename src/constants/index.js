@@ -15,6 +15,7 @@ export const M6_5_PLUS_QUAKE = "slateblue";
 
 // Map
 export const MAP_CENTER_POSITION = [26.5, 11.9];
+export const INITIAL_MAP_BOUNDS = [[73, 147], [-47, -123]];
 export const MAP_ZOOM_LEVEL = 3;
 export const MAP_ZOOM_LEVEL_WHEN_SELECTED = 15;
 export const MIN_MAGNITUDE = 4;

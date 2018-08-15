@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 import {
   NEWEST_QUAKE_FILTER,
   MAP_CENTER_POSITION,
-  MAP_ZOOM_LEVEL
+  MAP_ZOOM_LEVEL,
+  INITIAL_MAP_BOUNDS
 } from "../constants";
 import {
   SET_IS_FETCHING,
@@ -15,7 +16,8 @@ import {
   SET_ZOOM_LEVEL_OF_MAP,
   SET_EARTHQUAKE_SEARCH_PARAMS,
   TOGGLE_LEGEND_OPEN,
-  CLOSE_LEGEND
+  CLOSE_LEGEND,
+  SET_BOUNDS_OF_MAP
 } from "../actions";
 
 const isFetchingEarthquakes = (state = false, action) => {
@@ -74,6 +76,15 @@ const searchEarthquakeParams = (state = {}, action) => {
   }
 };
 
+const boundsOfMap = (state = INITIAL_MAP_BOUNDS, action) => {
+  switch (action.type) {
+    case SET_BOUNDS_OF_MAP:
+      return action.mapBounds;
+    default:
+      return state;
+  }
+};
+
 const quakesListFilters = (
   state = {
     searchListValue: "",
@@ -102,8 +113,6 @@ const isLegendMobileOpen = (state = false, action) => {
   }
 };
 
-// TODO: add action to clear the advanced search filters and use it on the button in the quakes list
-
 const rootReducer = combineReducers({
   isFetchingEarthquakes,
   receivedEarthquakes,
@@ -112,7 +121,8 @@ const rootReducer = combineReducers({
   zoomLevelOfMap,
   quakesListFilters,
   searchEarthquakeParams,
-  isLegendMobileOpen
+  isLegendMobileOpen,
+  boundsOfMap
 });
 
 export default rootReducer;

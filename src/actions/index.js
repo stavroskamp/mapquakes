@@ -13,6 +13,7 @@ export const SET_ZOOM_LEVEL_OF_MAP = "SET_ZOOM_LEVEL_OF_MAP";
 export const SET_EARTHQUAKE_SEARCH_PARAMS = "SET_EARTHQUAKE_SEARCH_PARAMS";
 export const TOGGLE_LEGEND_OPEN = "TOGGLE_LEGEND_OPEN";
 export const CLOSE_LEGEND = "CLOSE_LEGEND";
+export const SET_BOUNDS_OF_MAP = "SET_BOUNDS_OF_MAP";
 
 export const isFetchingEarthquakes = isFetching => {
   return dispatch => {
@@ -110,7 +111,16 @@ export const closeLegendAction = () => {
   };
 };
 
-export const getEarthquakesAction = params => {
+export const setBoundsOfMap = mapBounds => {
+  return dispatch => {
+    dispatch({
+      type: SET_BOUNDS_OF_MAP,
+      mapBounds
+    });
+  };
+};
+
+export const getEarthquakesAction = (params, setBounds) => {
   return async dispatch => {
     dispatch(isFetchingEarthquakes(true));
     const earthquakes = await getAsyncEarthquakes(params);
@@ -122,12 +132,19 @@ export const getEarthquakesAction = params => {
     } else {
       dispatch(receivedEarthquakesAction(earthquakes));
 
-      // if there are earthquakes success toast, else warning toast
-      earthquakes && earthquakes.features && earthquakes.features.length
-        ? toast.success(`${earthquakes.features.length} earthquakes loaded`)
-        : toast.warning("No earthquakes loaded");
+      if (earthquakes && earthquakes.features && earthquakes.features.length) {
+        toast.success(`${earthquakes.features.length} earthquakes loaded`);
+
+        if (setBounds) {
+          const box = earthquakes.bbox;
+          dispatch(setBoundsOfMap([[box[4], box[3]], [box[1], box[0]]]));
+        }
+      } else {
+        toast.warning("No earthquakes loaded");
+      }
     }
 
+    dispatch(setSearchListValueAction(""));
     dispatch(isFetchingEarthquakes(false));
   };
 };

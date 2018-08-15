@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setEarthquakeSearchParams: params =>
       dispatch(setEarthquakeSearchParamsAction(params)),
-    getEarthquakes: params => dispatch(getEarthquakesAction(params))
+    getEarthquakes: params => dispatch(getEarthquakesAction(params, true))
   };
 };
 
