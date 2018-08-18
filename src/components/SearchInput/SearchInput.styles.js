@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Input, InputGroup } from "reactstrap";
-import { TiBackspace } from "react-icons/lib/ti/";
+import TiBackspace from "react-icons/lib/ti/backspace";
 
 export const StyledInputGroup = styled(InputGroup)`
   width: 220px;

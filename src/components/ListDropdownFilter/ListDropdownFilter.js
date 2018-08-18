@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import { StyledListDropdownFilter } from "./ListDropdownFilter.styles";
-import { TiFilter } from "react-icons/lib/ti/";
+import TiFilter from "react-icons/lib/ti/filter";
 import { scrollItemToTop } from "../../libs/helpers";
 import {
   NEWEST_QUAKE_FILTER,
