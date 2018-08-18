@@ -16,7 +16,7 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import { StyledMapWrapper, StyledMap } from "./MapArea.styles";
 import blueMarker from "../../images/blue-marker-512.png";
 import yellowMarker from "../../images/yellow-marker-512.png";
-import { Icon } from "leaflet/src/layer/marker/Icon";
+import { Icon } from "leaflet";
 import { scrollIntoView } from "../../libs/helpers";
 import withSizes from "react-sizes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
