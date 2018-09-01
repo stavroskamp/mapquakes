@@ -11,6 +11,8 @@ import "react-day-picker/lib/style.css";
 import App from "./App";
 import "typeface-open-sans";
 import smoothscroll from "smoothscroll-polyfill";
+import { devToolsEnhancer } from "redux-devtools-extension";
+
 smoothscroll.polyfill();
 window.__forceSmoothScrollPolyfill__ = true;
 
@@ -20,7 +22,7 @@ const store = createStore(
   rootReducer,
   compose(
     middleware,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    devToolsEnhancer()
   )
 );
 
