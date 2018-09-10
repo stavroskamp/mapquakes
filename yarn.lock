@@ -95,8 +95,8 @@
     "@fortawesome/fontawesome-common-types" "^0.2.4"
 
 "@fortawesome/react-fontawesome@^0.1.0-11":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.2.tgz#baad4a6508867567aea20c1551bf62ff090d8121"
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.3.tgz#266b4047892c3d10498af1075d89252f74015b11"
   dependencies:
     humps "^2.0.1"
     prop-types "^15.5.10"
@@ -5818,8 +5818,8 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     strip-json-comments "~2.0.1"
 
 react-day-picker@^7.1.9:
-  version "7.2.2"
-  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-7.2.2.tgz#6731af37c83e191f38431a2a6f32f8345066f7ce"
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-7.2.3.tgz#51722dc66ae3478af2dfdb754350db6a1c521332"
   dependencies:
     prop-types "^15.6.2"
 
@@ -5847,21 +5847,21 @@ react-dev-utils@^5.0.1:
     text-table "0.2.0"
 
 react-dom@^16.3.2:
-  version "16.4.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.0.tgz#57704e5718669374b182a17ea79a6d24922cb27d"
   dependencies:
-    fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.2"
+    schedule "^0.3.0"
 
 react-error-overlay@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
 
 react-hot-loader@^4.3.3:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.3.5.tgz#d8659839d8072d4b78938a776f29f5f1d2a40170"
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.3.6.tgz#26e1491f08daf2bad99d141b1927c9faadef2fb4"
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
@@ -5946,8 +5946,8 @@ react-sizes@^1.0.4:
     prop-types "^15.6.0"
 
 react-toastify@^4.1.0:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-4.2.3.tgz#943e405ccdf76397dbc76d520dbf4825e4775cd5"
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-4.3.1.tgz#37436d83f378c6fa4853ea5517916e80bb3d17f9"
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.6.0"
@@ -5963,13 +5963,13 @@ react-transition-group@^2.3.1, react-transition-group@^2.4.0:
     react-lifecycles-compat "^3.0.4"
 
 react@^16.3.2:
-  version "16.4.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.5.0.tgz#f2c1e754bf9751a549d9c6d9aca41905beb56575"
   dependencies:
-    fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.2"
+    schedule "^0.3.0"
 
 reactstrap@^6.0.1:
   version "6.4.0"
@@ -6361,6 +6361,12 @@ sane@~1.6.0:
 sax@^1.2.1, sax@^1.2.4, sax@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+
+schedule@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.3.0.tgz#1be2ab2fc2e768536269ce7326efb478d6c045e8"
+  dependencies:
+    object-assign "^4.1.1"
 
 schema-utils@^0.3.0:
   version "0.3.0"
@@ -7437,8 +7443,8 @@ whatwg-fetch@2.0.3:
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
 whatwg-fetch@>=0.10.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
 
 whatwg-url@^4.3.0:
   version "4.8.0"
