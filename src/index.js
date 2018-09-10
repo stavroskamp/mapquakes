@@ -12,11 +12,14 @@ import App from "./App";
 import "typeface-open-sans";
 import smoothscroll from "smoothscroll-polyfill";
 import { devToolsEnhancer } from "redux-devtools-extension";
+import ReactGA from "react-ga";
 
 smoothscroll.polyfill();
 window.__forceSmoothScrollPolyfill__ = true;
 
 const middleware = applyMiddleware(thunk);
+ReactGA.initialize("UA-125510256-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const store = createStore(
   rootReducer,
