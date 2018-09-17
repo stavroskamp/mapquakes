@@ -42,8 +42,15 @@ class ModalAboutInfo extends React.Component {
             <StyledModalCloseIcon onClick={this.toggleModal} icon={faTimes} />
           </StyledModalHeader>
           <ModalBody>
-            {"The application is not responsible for country names, borders, "}
-            {"This website is not affiliated in"}
+            <p>Search for earthquakes data.</p>
+            <p>
+              All the data about the earthquakes are consumed from the USGS api.
+              The data are dynamic and can change any time.
+            </p>
+            <p>
+              This website is not responsible for errors in country names,
+              borders and bounding boxes.
+            </p>
           </ModalBody>
         </StyledModal>
       </React.Fragment>
