@@ -5,17 +5,17 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  background: linear-gradient(to right, #304c98, #06bfc5);
+  background: #057c80;
 `;
 
 export const Logo = styled.img`
   padding: 0 10px;
-  height: 38px;
+  height: 44px;
 `;
 
 export const LogoText = styled.div`
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 600;
   color: #ffe484;
 `;
 

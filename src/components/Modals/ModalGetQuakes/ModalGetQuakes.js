@@ -13,7 +13,6 @@ import { Button, CountrySelect } from "../../../components";
 import { Form, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-
 import { faSearch, faGlobe, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class ModalGetQuakes extends React.Component {
@@ -110,6 +109,7 @@ class ModalGetQuakes extends React.Component {
                 <Label>
                   Select start date <br />
                   <DayPickerInput
+                    placeholder="YYYY-MM-DD"
                     value={selectedFromDay}
                     onDayChange={this.handleFromDayChange}
                   />
@@ -119,6 +119,7 @@ class ModalGetQuakes extends React.Component {
                 <Label>
                   Select end date <br />
                   <DayPickerInput
+                    placeholder="YYYY-MM-DD"
                     value={selectedToDay}
                     onDayChange={this.handleToDayChange}
                   />
@@ -130,8 +131,8 @@ class ModalGetQuakes extends React.Component {
                     type="checkbox"
                     onChange={this.toggleUnder25Checkbox}
                     defaultChecked={hasMinMagnitude}
-                  />{" "}
-                  Include earthquakes smaller than {MIN_MAGNITUDE}
+                  />
+                  Include earthquakes with magnitude {"<"} {MIN_MAGNITUDE}
                 </Label>
               </StyledFormGroup>
             </Form>

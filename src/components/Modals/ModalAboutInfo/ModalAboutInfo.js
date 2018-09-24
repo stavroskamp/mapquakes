@@ -44,8 +44,8 @@ class ModalAboutInfo extends React.Component {
           <ModalBody>
             <p>Search for earthquakes data.</p>
             <p>
-              All the data about the earthquakes are consumed from the USGS api.
-              The data are dynamic and can change any time.
+              All the data about the earthquakes are consumed from the USGS API.
+              The data are dynamic and can change at any time.
             </p>
             <p>
               This website is not responsible for errors in country names,
