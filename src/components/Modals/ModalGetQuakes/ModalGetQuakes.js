@@ -87,7 +87,7 @@ class ModalGetQuakes extends React.Component {
       <React.Fragment>
         <Button onClick={this.toggleModal} yellow="true" menustyle="true">
           <FontAwesomeIcon icon={faSearch} />
-          {!this.props.isMobile ? <span> Search earthquakes</span> : null}
+          {!this.props.isMobile ? <span> Advanced Search</span> : null}
         </Button>
         <StyledModal isOpen={isModalOpen} toggle={this.toggleModal}>
           <StyledModalHeader toggle={this.toggle}>

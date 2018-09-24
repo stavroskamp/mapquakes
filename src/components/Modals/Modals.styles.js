@@ -11,7 +11,8 @@ export const StyledModal = styled(Modal)`
   margin-bottom: 0;
 
   .modal-content {
-    border-radius: 0;
+    /* border-radius: 0; */
+    border: 0px;
   }
 `;
 
@@ -21,9 +22,10 @@ export const StyledModalBody = styled(ModalBody)`
 
 export const StyledModalHeader = styled(ModalHeader)`
   color: white;
-  background: linear-gradient(to right, #304c98, #06bfc5);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  background: #057c80;
+  /* border-top-left-radius: 0;
+  border-top-right-radius: 0; */
+  border: 0px;
 
   .modal-title {
     font-size: 18px;
