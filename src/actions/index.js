@@ -1,4 +1,5 @@
 import { getAsyncEarthquakes } from "../libs/requests";
+import { boundingBoxesFromCountryName } from "../libs/helpers";
 import { toast } from "react-toastify";
 
 export const SET_IS_FETCHING = "SET_IS_FETCHING";
@@ -136,8 +137,21 @@ export const getEarthquakesAction = (params, setBounds) => {
         toast.success(`${earthquakes.features.length} earthquakes loaded`);
 
         if (setBounds) {
-          const box = earthquakes.bbox;
-          dispatch(setBoundsOfMap([[box[4], box[3]], [box[1], box[0]]]));
+          const { selectedCountry } = params;
+          const box = selectedCountry
+            ? boundingBoxesFromCountryName(selectedCountry)
+            : earthquakes.bbox;
+
+          if (selectedCountry) {
+            dispatch(
+              setBoundsOfMap([
+                [box.maxlatitude, box.maxlongitude],
+                [box.minlatitude, box.minlongitude]
+              ])
+            );
+          } else {
+            dispatch(setBoundsOfMap([[box[4], box[3]], [box[1], box[0]]]));
+          }
         }
       } else {
         toast.warning("No earthquakes loaded");
