@@ -37,11 +37,13 @@ const QuakesList = ({
         <StyledListGroup>
           {earthquakes.features
             // filters the values
-            .filter(earthquake =>
-              includes(
-                earthquake.properties.place.toLowerCase(),
-                filters.searchListValue.toLowerCase()
-              )
+            .filter(
+              earthquake =>
+                earthquake.properties.place &&
+                includes(
+                  earthquake.properties.place.toLowerCase(),
+                  filters.searchListValue.toLowerCase()
+                )
             )
             .sort((a, b) => {
               let sorted;

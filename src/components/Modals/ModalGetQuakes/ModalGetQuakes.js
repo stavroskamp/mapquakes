@@ -13,7 +13,7 @@ import { Button, CountrySelect } from "../../../components";
 import { Form, Label, Input } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import { faSearch, faGlobe, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class ModalGetQuakes extends React.Component {
   static propTypes = {
@@ -139,7 +139,7 @@ class ModalGetQuakes extends React.Component {
           </StyledModalBody>
           <StyledModalFooter>
             <Button yellow="true" onClick={this.getMoreEarthquakes}>
-              <FontAwesomeIcon icon={faGlobe} /> Get earthquakes
+              Get earthquakes
             </Button>{" "}
             <Button cancel="true" onClick={this.toggleModal}>
               Cancel
